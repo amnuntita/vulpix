@@ -33,10 +33,11 @@
   color: #61dafb;
 }
 
-.searchbox{
-  padding-top: 100px;
-  padding-left:3px;
-  padding-right: 3px;
+.appcard{
+  margin: 0 auto;
+  float:none;
+  width: 40%;
+  margin-top: 40px;
 }
 
 .sidebar{

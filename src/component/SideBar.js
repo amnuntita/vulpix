@@ -1,14 +1,22 @@
 import React from 'react'
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import {Label,NavItem} from 'reactstrap';
+import {NavLink} from 'react-router-dom';
 
 const SideBar = () => {
 
-  return (
-      <div className="sidebar">
-        <div className="menu"> Home </div>
-        <div className="menu"> About </div>
-      </div>
-  )
+  return(
+    <div className="sidebar">
+        <nav>
+                <Label> search box </Label>
+                <NavItem>
+                  <NavLink className="nav-link"  to='/home'>Home</NavLink>
+                  <NavLink className="nav-link"  to='/about'>About</NavLink>
+                </NavItem>
+        
+        </nav>
+            
+    </div>
+)
 }
 
-export default SideBar
+export default SideBar;
