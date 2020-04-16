@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -23,9 +23,31 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.Center{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40 px;
+}
 .App-link {
   color: #61dafb;
+}
+
+.searchbox{
+  padding-top: 100px;
+  padding-left:3px;
+  padding-right: 3px;
+}
+
+.sidebar{
+  background-color: #131b1d;;
+  align-items: left;
+  height: 100%;
+  position: fixed;  
+  top: 0;
+  left: 0; 
+  width:10%;
+
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +57,5 @@
   to {
     transform: rotate(360deg);
   }
+
 }
