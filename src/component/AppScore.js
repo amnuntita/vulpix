@@ -4,7 +4,7 @@ import {Card,CardBody,CardTitle,CardSubtitle,CardText,Col} from 'reactstrap';
 
     const AppScore = () =>{
         return(
-            <div className="appcard">
+            <div className="appcard col-11 col-md-5">
             <Card>
                 <CardBody>
                 <CardTitle>Card title</CardTitle>
