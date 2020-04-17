@@ -39,6 +39,15 @@
   margin-top: 40px;
 }
 
+.appcard{
+  margin: 0 auto;
+  max-width: auto;
+  float:none;
+  margin-top: 40px;
+}
+
+
+
 .sidebar{
   background-color: #131b1d;;
   align-items: left;

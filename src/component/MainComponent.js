@@ -18,7 +18,7 @@ function Main(){
                 <Route path='/detail' component={detail}/>
                 <Route path='/home' component={home}/>
                 <Route path='/about' component={about}/>
-                <Route path='/home' component={result}/>
+                <Route path='/result' component={result}/>
                 
             </Switch>
         </div>

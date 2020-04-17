@@ -1,14 +1,15 @@
 import React from 'react';
 import {Card,CardBody,CardTitle,CardSubtitle,CardText,Col} from 'reactstrap';
 
+function AppDetail(){
 
     const AppDetail = () =>{
         return(
             <div className="appcard col-11 col-md-5">
             <Card>
                 <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
+                <CardTitle>Application Name</CardTitle>
+                <CardSubtitle>Developer</CardSubtitle>
                 <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -18,8 +19,12 @@ import {Card,CardBody,CardTitle,CardSubtitle,CardText,Col} from 'reactstrap';
                 </CardBody>
             </Card>
             </div>
-)
+        )
     }
+    return AppDetail();
+
+}
+
 
 
 export default AppDetail;
