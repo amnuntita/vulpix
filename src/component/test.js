@@ -1,25 +1,33 @@
+
 import React,{useState, useEffect} from 'react';
+import {baseUrl} from '../shared/BaseUrl.js';
 import {Card,CardBody,CardTitle,CardSubtitle,CardText,Col} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
+const Test = () => {
+    const [appList,setAppList] = useState({});
+    const [selectedApp,setSelected] = useState(false);
+    const [hasError, setErrors] = useState(false);
 
-    const AppDetail = (props) =>{
-
-        const [appName,setName] = useState("");
-        const appList = props.appList;
-        const select = props.select; 
-        useEffect(() => {
-
-            const name = () => {if(appList[select])
-                {setName(appList[select].package_name)};}
-            name();
-
-        })
-        return(
-            <div className="appcard col-11 col-md-5">
-            <Card>
+    useEffect(() => {
+        async function fetchData() {
+          const res = await fetch(baseUrl+"app_list");
+          res
+            .json()
+            .then(res => setAppList(res))
+        }
+    
+        fetchData();
+      });
+    
+    for(var i = 0;i<appList.length;i++){
+      //console.log(appList[i].size);
+    }
+    
+    return(<div>
+      <Card>
                 <CardBody>
-                <CardTitle><h2>{appName}</h2></CardTitle>
-                <CardSubtitle></CardSubtitle>
+                <CardTitle></CardTitle>
                 <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -27,11 +35,9 @@ import {Card,CardBody,CardTitle,CardSubtitle,CardText,Col} from 'reactstrap';
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </CardText>
                 </CardBody>
-            </Card>
-            </div>
-        )
-    }
+      </Card>
+    </div>);
 
+}
 
-
-export default AppDetail;
+export default Test;

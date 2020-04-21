@@ -1,4 +1,4 @@
-{
+export const appList = {
     "app_list": [
         {
             "app_availability": {
