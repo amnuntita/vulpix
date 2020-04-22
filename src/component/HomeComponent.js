@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { Media } from "reactstrap";
 import NavBar from "./NavBar.js";
+import Search from "./SearchComponent.js";
 import { baseUrl } from "../shared/BaseUrl.js";
 
-const HomeComponent = () => {
+const HomeComponent = (props) => {
   return (
     <div>
-      <div>
-        <NavBar />
-        <Media className="logo">
-          <Media src={baseUrl + "images/logo_transparent.png"} alt="logo" />
+      <NavBar />
+      <div className="logo">
+        <Media>
+          <Media src={baseUrl + "images/logo.png"} alt="logo" />
         </Media>
+        <div className="search">
+          <Search appList={props.appList} />
+        </div>
       </div>
     </div>
   );

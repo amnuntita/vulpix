@@ -30,7 +30,9 @@ const Main = () => {
   return (
     <div>
       <Switch>
-        <Route path="/home" component={HomeComponent} />
+        <Route path="/home">
+          <HomeComponent appList={appList} />
+        </Route>
         <Route path="/about" component={AboutComponent} />
         <Route path="/detail/:appId" component={detail} />
       </Switch>
