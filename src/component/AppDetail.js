@@ -1,37 +1,76 @@
-import React,{useState, useEffect} from 'react';
-import {Card,CardBody,CardTitle,CardSubtitle,CardText,Col} from 'reactstrap';
+import React, { useState, useEffect } from "react";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText,
+  Media,
+  Col,
+  Row,
+} from "reactstrap";
 
+const AppDetail = (props) => {
+  const [appName, setName] = useState("");
+  const [appDev, setDev] = useState("");
+  const [appIcon, setIcon] = useState("");
+  const [appRating, setRating] = useState("");
+  const [appDownload, setDownload] = useState("");
+  const [appDesc, setDesc] = useState("");
+  const appList = props.appList;
+  const select = props.select;
+  useEffect(() => {
+    const name = () => {
+      const app = appList[select];
+      if (app) {
+        setName("Application");
+        setDev(app.developer);
+        setIcon(app.icon);
+        setRating(app.rating);
+        setDownload(app.downloads);
+        setDesc(app.short_desc);
+      }
+    };
+    name();
+  });
 
-    const AppDetail = (props) =>{
+  console.log(appDownload);
 
-        const [appName,setName] = useState("");
-        const appList = props.appList;
-        const select = props.select; 
-        useEffect(() => {
+  const number = (p, text) => {
+    //console.log(p);
+    return (
+      <div className="col-sm box">
+        {p}
+        <div style={{ fontSize: 20, textAlign: "center" }}>{text}</div>
+      </div>
+    );
+  };
 
-            const name = () => {if(appList[select])
-                {setName(appList[select].package_name)};}
-            name();
-
-        })
-        return(
-            <div className="appcard col-11 col-md-5">
-            <Card>
-                <CardBody>
-                <CardTitle><h2>{appName}</h2></CardTitle>
-                <CardSubtitle></CardSubtitle>
-                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </CardText>
-                </CardBody>
-            </Card>
+  return (
+    <div className="appcard col-11 col-md-5">
+      <Card>
+        <CardBody>
+          <div className="row">
+            <Media left className="icon">
+              <Media src={appIcon} alt="Generic placeholder image" />
+            </Media>
+            <div className="col">
+              <CardTitle>
+                <h1>{appName}</h1>
+              </CardTitle>
+              <CardSubtitle>Developer: {appDev}</CardSubtitle>
+              <CardText style={{ marginTop: 2 }}>{appDesc}</CardText>
             </div>
-        )
-    }
-
-
+          </div>
+          <div className="row">
+            {number(appDownload, "download")}
+            {number(appRating, "rating")}
+            {number(59, "VULPIX score")}
+          </div>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
 
 export default AppDetail;

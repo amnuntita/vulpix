@@ -1,9 +1,7 @@
-import React,{useState} from 'react';
+import React, { useState } from "react";
 
-function ResultComponent(){
-
-    return(<div>Result</div>)
-
+function ResultComponent() {
+  return <div>Result</div>;
 }
 
 export default ResultComponent;
