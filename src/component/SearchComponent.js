@@ -11,9 +11,18 @@ const Search = (props) => {
   };
 
   useEffect(() => {
-    if (appList) {
+    if (appList.length !== 0) {
       setAppList(props.appList);
+      //console.log(appList);
+      const value = appList.filter((app) =>
+        app.package_name.toLowercase().includes(searchTerm)
+      );
+
+      setSearchValue(value);
     }
+  });
+  console.log(() => {
+    appList.map((app) => app);
   });
 
   return (
