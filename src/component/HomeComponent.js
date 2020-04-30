@@ -3,6 +3,7 @@ import { Media } from "reactstrap";
 import NavBar from "./NavBar.js";
 import Search from "./SearchComponent.js";
 import { baseUrl } from "../shared/BaseUrl.js";
+import { logDOM } from "@testing-library/react";
 
 const HomeComponent = (props) => {
   return (
@@ -10,10 +11,10 @@ const HomeComponent = (props) => {
       <NavBar />
       <div className="logo">
         <Media>
-          <Media src={baseUrl + "images/logo.png"} alt="logo" />
+          <Media src={baseUrl + "public/logo.png"} alt="vulpix" />
         </Media>
         <div className="search">
-          <Search appList={props.appList} />
+          <Search />
         </div>
       </div>
     </div>

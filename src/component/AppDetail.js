@@ -9,32 +9,31 @@ import {
   Col,
   Row,
 } from "reactstrap";
+import { baseUrl } from "../shared/BaseUrl.js";
 
 const AppDetail = (props) => {
-  const [appName, setName] = useState("");
+  const [app, setApp] = useState(false);
+  const [appTitle, setTitle] = useState("");
   const [appDev, setDev] = useState("");
   const [appIcon, setIcon] = useState("");
   const [appRating, setRating] = useState("");
   const [appDownload, setDownload] = useState("");
   const [appDesc, setDesc] = useState("");
-  const appList = props.appList;
-  const select = props.select;
+  const appId = props.select;
   useEffect(() => {
-    const name = () => {
-      const app = appList[select];
-      if (app) {
-        setName("Application");
-        setDev(app.developer);
-        setIcon(app.icon);
-        setRating(app.rating);
-        setDownload(app.downloads);
-        setDesc(app.short_desc);
-      }
-    };
-    name();
+    async function fetchData() {
+      const res = await fetch(baseUrl + "api/apps/" + appId);
+      res
+        .json()
+        .then((res) => setApp(res))
+        .then(setTitle(app.title))
+        .then(setDev(app.developerId))
+        .then(setIcon(app.icon))
+        .then(setRating(app.scoreText))
+        .then(setDownload(app.installs));
+    }
+    fetchData();
   });
-
-  console.log(appDownload);
 
   const number = (p, text) => {
     //console.log(p);
@@ -56,7 +55,7 @@ const AppDetail = (props) => {
             </Media>
             <div className="col">
               <CardTitle>
-                <h1>{appName}</h1>
+                <h1>{appTitle}</h1>
               </CardTitle>
               <CardSubtitle>Developer: {appDev}</CardSubtitle>
               <CardText style={{ marginTop: 2 }}>{appDesc}</CardText>
