@@ -35,6 +35,7 @@ const Main = () => {
         </Route>
         <Route path="/about" component={AboutComponent} />
         <Route path="/detail/:appId" component={detail} />
+        <Route path="/test" component={Test} />
       </Switch>
     </div>
   );
