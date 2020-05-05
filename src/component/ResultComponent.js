@@ -17,16 +17,20 @@ import { baseUrl } from "../shared/BaseUrl.js";
 const ResultComponent = (props) => {
   const [qres, setRes] = useState("");
   const [resList, setList] = useState([]);
+  const query = "api/apps?q=" + props.query;
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(baseUrl + "api/apps?q=twitter");
-      res.json().then((res) => setRes(res));
+      const res = await fetch(baseUrl + query);
+      res
+        .json()
+        .then((res) => {
+          setRes(res);
+          return res;
+        })
+        .then((res) => setList(res.results));
     }
     fetchData();
-    if (qres) {
-      setList(qres.results);
-    }
-  }, [qres]);
+  }, []);
 
   return <div>{JSON.stringify(resList)}</div>;
 };

@@ -15,21 +15,23 @@ const AppDetail = (props) => {
   const [app, setApp] = useState(false);
   const [appDev, setDev] = useState("");
   const [devName, setDevName] = useState("");
-  const [appId, setId] = useState("");
+  const appId = props.select;
+
   useEffect(() => {
-    setId(props.select);
     async function fetchData() {
       const res = await fetch(baseUrl + "api/apps/" + appId);
       res
         .json()
-        .then((res) => setApp(res))
-        .then(setDev(app.developer));
+        .then((res) => {
+          setApp(res);
+          return res;
+        })
+        .then((app) => {
+          setDev(app.developer);
+        });
     }
     fetchData();
-    if (appDev) {
-      setDevName(appDev.devId);
-    }
-  });
+  }, []);
 
   const number = (p, text) => {
     //console.log(p);
@@ -53,7 +55,10 @@ const AppDetail = (props) => {
               <CardTitle>
                 <h1>{app.title}</h1>
               </CardTitle>
-              <CardSubtitle>Developer: {devName}</CardSubtitle>
+              <CardSubtitle>Developer:{appDev.devId}</CardSubtitle>
+              <CardText style={{ marginTop: 2 }}>
+                Description: {app.summary}
+              </CardText>
             </div>
           </div>
           <div className="row">
