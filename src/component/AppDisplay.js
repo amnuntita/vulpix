@@ -8,7 +8,7 @@ const AppDisplay = (props) => {
     <div>
       <SideBar />
       <div className="row">
-        <AppDetail select={props.select} appList={props.appList} />
+        <AppDetail select={props.select} />
       </div>
       <div className="row">
         <AppScore />

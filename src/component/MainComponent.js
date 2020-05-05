@@ -4,15 +4,20 @@ import AppDisplay from "./AppDisplay.js";
 import HomeComponent from "./HomeComponent.js";
 import AboutComponent from "./AboutComponent.js";
 import ResultComponent from "./ResultComponent.js";
-
 import Test from "./test.js";
 
 const Main = () => {
   const [selectedId, setSelected] = useState(false);
+  const [q, setQuery] = useState("");
 
   const detail = ({ match }) => {
     setSelected(match.params.appId);
     return <AppDisplay select={selectedId} />;
+  };
+
+  const result = ({ match }) => {
+    setQuery(match.params.query);
+    return <ResultComponent query={q} />;
   };
 
   return (
@@ -23,6 +28,7 @@ const Main = () => {
         </Route>
         <Route path="/about" component={AboutComponent} />
         <Route path="/detail/:appId" component={detail} />
+        <Route path="/result/:query" component={result} />
       </Switch>
     </div>
   );

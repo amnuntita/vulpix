@@ -13,26 +13,22 @@ import { baseUrl } from "../shared/BaseUrl.js";
 
 const AppDetail = (props) => {
   const [app, setApp] = useState(false);
-  const [appTitle, setTitle] = useState("");
   const [appDev, setDev] = useState("");
-  const [appIcon, setIcon] = useState("");
-  const [appRating, setRating] = useState("");
-  const [appDownload, setDownload] = useState("");
-  const [appDesc, setDesc] = useState("");
-  const appId = props.select;
+  const [devName, setDevName] = useState("");
+  const [appId, setId] = useState("");
   useEffect(() => {
+    setId(props.select);
     async function fetchData() {
       const res = await fetch(baseUrl + "api/apps/" + appId);
       res
         .json()
         .then((res) => setApp(res))
-        .then(setTitle(app.title))
-        .then(setDev(app.developerId))
-        .then(setIcon(app.icon))
-        .then(setRating(app.scoreText))
-        .then(setDownload(app.installs));
+        .then(setDev(app.developer));
     }
     fetchData();
+    if (appDev) {
+      setDevName(appDev.devId);
+    }
   });
 
   const number = (p, text) => {
@@ -51,19 +47,18 @@ const AppDetail = (props) => {
         <CardBody>
           <div className="row">
             <Media left className="icon">
-              <Media src={appIcon} alt="Generic placeholder image" />
+              <Media src={app.icon} alt="Generic placeholder image" />
             </Media>
             <div className="col">
               <CardTitle>
-                <h1>{appTitle}</h1>
+                <h1>{app.title}</h1>
               </CardTitle>
-              <CardSubtitle>Developer: {appDev}</CardSubtitle>
-              <CardText style={{ marginTop: 2 }}>{appDesc}</CardText>
+              <CardSubtitle>Developer: {devName}</CardSubtitle>
             </div>
           </div>
           <div className="row">
-            {number(appDownload, "download")}
-            {number(appRating, "rating")}
+            {number(app.installs, "download")}
+            {number(app.scoreText, "rating")}
             {number(59, "VULPIX score")}
           </div>
         </CardBody>
