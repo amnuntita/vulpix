@@ -26,7 +26,6 @@ const ResultComponent = (props) => {
         .json()
         .then((res) => {
           setRes(res);
-          console.log(res.length);
           return res;
         })
         .then((res) => {
