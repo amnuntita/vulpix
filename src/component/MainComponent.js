@@ -17,7 +17,11 @@ const Main = () => {
 
   const result = ({ match }) => {
     setQuery(match.params.query);
-    return <ResultComponent query={q} />;
+    return (
+      <div>
+        <ResultComponent query={q} />
+      </div>
+    );
   };
 
   return (

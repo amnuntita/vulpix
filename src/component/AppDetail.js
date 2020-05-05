@@ -52,9 +52,7 @@ const AppDetail = (props) => {
               <Media src={app.icon} alt="Generic placeholder image" />
             </Media>
             <div className="col">
-              <CardTitle>
-                <h1>{app.title}</h1>
-              </CardTitle>
+              <CardTitle style={{ fontSize: 32 }}>{app.title}</CardTitle>
               <CardSubtitle>Developer:{appDev.devId}</CardSubtitle>
               <CardText style={{ marginTop: 2 }}>
                 Description: {app.summary}
