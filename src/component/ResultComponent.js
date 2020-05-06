@@ -52,7 +52,7 @@ const ResultComponent = (props) => {
               </Link>
               <div className="col">
                 <CardTitle style={{ fontSize: 20 }}>{app.title}</CardTitle>
-                <CardSubtitle>Developer:{app.developer.devId}</CardSubtitle>
+                <CardSubtitle>Developer: {app.developer.devId}</CardSubtitle>
               </div>
             </div>
           </CardBody>

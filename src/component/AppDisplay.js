@@ -1,7 +1,8 @@
-import React, { useState, Component } from "react";
+import React, { useState, useEffect, Component } from "react";
 import SideBar from "./SideBar.js";
 import AppDetail from "./AppDetail.js";
 import AppScore from "./AppScore.js";
+import { baseUrl } from "../shared/BaseUrl.js";
 
 const AppDisplay = (props) => {
   return (
@@ -11,7 +12,7 @@ const AppDisplay = (props) => {
         <AppDetail select={props.select} />
       </div>
       <div className="row">
-        <AppScore />
+        <AppScore appId={props.select} />
       </div>
       <div className="row">
         <AppScore />

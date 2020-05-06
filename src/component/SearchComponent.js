@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Input, Col } from "reactstrap";
+import { Input, Col, Button, Row, Form } from "reactstrap";
 import { baseUrl } from "../shared/BaseUrl.js";
+import { Link } from "react-router-dom";
 
 const Search = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,15 +21,19 @@ const Search = (props) => {
     console.log(searchTerm);
     if (searchTerm.length >= 2) {
       handleValue(searchTerm);
+      console.log(searchValue);
     }
   };
 
   useEffect(() => {});
 
   return (
-    <Col>
+    <Form inline>
       <Input type="text" onChange={handleInputChange} value={searchTerm} />
-    </Col>
+      <Button>
+        <Link to={`/result/${searchTerm}`}>Go</Link>
+      </Button>
+    </Form>
   );
 };
 
