@@ -14,7 +14,8 @@ import { baseUrl } from "../shared/BaseUrl.js";
 const AppScore = (props) => {
   const [vulList, setList] = useState([]);
   const [res, setRes] = useState();
-  const apk = baseUrl + "res/" + props.appId + ".apk/" + props.cat;
+  const apk = baseUrl + "res?appId=" + props.appId + ".apk&q=" + props.cat;
+  const cat = props.cat == "Media" ? "Media and Device Usage" : props.cat;
 
   useEffect(() => {
     async function fetchVul() {
@@ -33,10 +34,16 @@ const AppScore = (props) => {
     fetchVul();
   }, [props]);
 
-  function DisplayPI({ PI }) {
+  function DisplayPI({ PI, leak }) {
     return (
-      <div className="col-md-3" style={({ marginLeft: 2 }, { marginRight: 2 })}>
-        <Media src={baseUrl + "public/icon/" + PI + ".png"} />
+      <div className="ibox">
+        <div
+          className="col-md-2 col-5 picon"
+          style={({ marginLeft: 0 }, { marginRight: 0 }, { marginTop: 4 })}
+        >
+          <Media src={baseUrl + "public/icon/" + PI + ".png"} />
+        </div>
+        <div className="smalltext">{PI}</div>
       </div>
     );
   }
@@ -52,10 +59,12 @@ const AppScore = (props) => {
       );
     } else {
       return (
-        <div className="row">
+        <div className="row" style={{ marginLeft: 30 }}>
           {Object.keys(vulList[0]).map((k) => {
             console.log(k);
-            return <DisplayPI PI={k} />;
+            if (k != "title") {
+              return <DisplayPI PI={k} leak={vulList[0][k]} />;
+            }
           })}
         </div>
       );
@@ -67,7 +76,7 @@ const AppScore = (props) => {
       <Card>
         <CardBody>
           <div className="row">
-            <CardTitle style={{ fontSize: 24 }}>{props.cat}</CardTitle>
+            <CardTitle style={{ fontSize: 24 }}>{cat}</CardTitle>
           </div>
           {DisplayIcon(vulList)}
         </CardBody>

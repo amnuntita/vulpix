@@ -30,6 +30,12 @@
   width: 100px;
 }
 
+.picon img {
+  height: 64px;
+  width: 64px;
+  opacity: 0.1;
+}
+
 .small {
   font-size: 20%;
 }
@@ -47,6 +53,21 @@
   font-size: 200%;
   font-family: monospace;
   text-align: center;
+}
+.smalltext {
+  font-size: xx-small;
+  text-align: center;
+  margin-top: 3px;
+}
+.ibox {
+  border: thin none gainsboro;
+  border-radius: 5%;
+  margin-top: 4px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-bottom: 2px;
+  width: 95px;
+  height: 95px;
 }
 
 .sidebar {

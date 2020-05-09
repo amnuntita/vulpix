@@ -14,6 +14,18 @@ const AppDisplay = (props) => {
       <div className="row">
         <AppScore appId={props.select} cat="Device" />
       </div>
+      <div className="row">
+        <AppScore appId={props.select} cat="Simcard" />
+      </div>
+      <div className="row">
+        <AppScore appId={props.select} cat="User" />
+      </div>
+      <div className="row">
+        <AppScore appId={props.select} cat="Media" />
+      </div>
+      <div className="row">
+        <AppScore appId={props.select} cat="Location" />
+      </div>
     </div>
   );
 };

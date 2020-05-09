@@ -59,7 +59,7 @@ app.get("/search", (req, res) => {
   // Router เวลาเรียกใช้งาน
   let sql =
     "SELECT `apk`,`title`,`rating`,`download`,`dev`,`icon` FROM app WHERE title LIKE " +
-    '"' +
+    '"%' +
     req.query.q +
     '%"'; // คำสั่ง sql
   let query = db.query(sql, (err, results) => {
@@ -73,30 +73,14 @@ app.get("/search", (req, res) => {
   });
 });
 
-app.get("/res/:appId/device", (req, res) => {
+app.get("/res/", (req, res) => {
   // Router เวลาเรียกใช้งาน
   let sql =
-    "SELECT `Android ID`,`Advertiser ID`,`Device Serial Number`,`Google Services Framework ID`,`IMEI`,`MAC Address` FROM result WHERE apk = " +
+    "SELECT * FROM " +
+    req.query.q +
+    " WHERE title = " +
     '"' +
-    req.params.appId +
-    '"'; // คำสั่ง sql
-  let query = db.query(sql, (err, results) => {
-    // สั่ง Query คำสั่ง sql
-    if (err) {
-      console.log(err);
-      throw err;
-    } // ดัก error
-    console.log(results); // แสดงผล บน Console
-    res.json(results); // สร้างผลลัพธ์เป็น JSON ส่งออกไปบน Browser
-  });
-});
-
-app.get("/res/:appId/simcard", (req, res) => {
-  // Router เวลาเรียกใช้งาน
-  let sql =
-    "SELECT `Cell ID`,`ICCID (SIM serial number)`,`IMSI`,`Location Area Code`,`Phone number` FROM result WHERE apk = " +
-    '"' +
-    req.params.appId +
+    req.query.appId +
     '"'; // คำสั่ง sql
   let query = db.query(sql, (err, results) => {
     // สั่ง Query คำสั่ง sql
