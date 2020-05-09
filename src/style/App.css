@@ -63,7 +63,14 @@
   width: 50%;
   left: 50%;
   top: 70%;
-  transform: translate(-15%, -70%);
+  transform: translate(-50%, -40%);
+}
+.searchButton {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  top: 70%;
+  transform: translate(50%, -40%);
 }
 @media screen and (max-width: 700px) {
   .sidebar {
@@ -77,6 +84,9 @@
   .search {
     top: 60%;
     width: 70%;
+  }
+  .res {
+    transform: translate(0%);
   }
 }
 

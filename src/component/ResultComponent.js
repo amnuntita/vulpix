@@ -18,7 +18,7 @@ import { Sidebar } from "semantic-ui-react";
 const ResultComponent = (props) => {
   const [qres, setRes] = useState("");
   const [resList, setList] = useState([]);
-  const query = "api/apps?q=" + props.query;
+  const query = "search/?q=" + props.query;
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(baseUrl + query);
@@ -29,7 +29,7 @@ const ResultComponent = (props) => {
           return res;
         })
         .then((res) => {
-          setList(res.results);
+          setList(res);
           return resList;
         })
         .then((resList) => {
@@ -42,17 +42,17 @@ const ResultComponent = (props) => {
   function DisplayApp({ app }) {
     return (
       <div className="res">
-        <Card key={app.appId}>
+        <Card key={app.apk}>
           <CardBody>
             <div className="row">
-              <Link to={`/detail/${app.appId}`}>
+              <Link to={`/detail/${app.apk}`}>
                 <Media left className="icon">
                   <Media src={app.icon} alt="Generic placeholder image" />
                 </Media>
               </Link>
               <div className="col">
                 <CardTitle style={{ fontSize: 20 }}>{app.title}</CardTitle>
-                <CardSubtitle>Developer: {app.developer.devId}</CardSubtitle>
+                <CardSubtitle>Developer: {app.dev}</CardSubtitle>
               </div>
             </div>
           </CardBody>

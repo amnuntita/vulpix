@@ -13,9 +13,9 @@ const HomeComponent = (props) => {
         <Media>
           <Media src={baseUrl + "public/logo.png"} alt="vulpix" />
         </Media>
-        <div className="search">
-          <Search />
-        </div>
+      </div>
+      <div>
+        <Search />
       </div>
     </div>
   );

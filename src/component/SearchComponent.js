@@ -9,7 +9,7 @@ const Search = (props) => {
 
   const handleValue = (term) => {
     async function fetchSuggest() {
-      const res = await fetch(baseUrl + "api/apps/?suggest=" + term);
+      const res = await fetch(baseUrl + "suggest/?q=" + term);
       res.json().then((res) => {
         setSearchValue(res);
       });
@@ -28,12 +28,16 @@ const Search = (props) => {
   useEffect(() => {});
 
   return (
-    <Form inline>
-      <Input type="text" onChange={handleInputChange} value={searchTerm} />
-      <Button>
-        <Link to={`/result/${searchTerm}`}>Go</Link>
-      </Button>
-    </Form>
+    <div>
+      <div className="search">
+        <Input type="text" onChange={handleInputChange} value={searchTerm} />
+      </div>
+      <div className="searchButton">
+        <Button>
+          <Link to={`/result/${searchTerm}`}>Go</Link>
+        </Button>
+      </div>
+    </div>
   );
 };
 

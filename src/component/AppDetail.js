@@ -13,22 +13,18 @@ import { baseUrl } from "../shared/BaseUrl.js";
 
 const AppDetail = (props) => {
   const [app, setApp] = useState(false);
-  const [appDev, setDev] = useState("");
-  const [devName, setDevName] = useState("");
   const appId = props.select;
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(baseUrl + "api/apps/" + appId);
+      const res = await fetch(baseUrl + "app/" + appId);
       res
         .json()
         .then((res) => {
-          setApp(res);
+          setApp(res[0]);
           return res;
         })
-        .then((app) => {
-          setDev(app.developer);
-        });
+        .then((res) => console.log(appId));
     }
     fetchData();
   }, []);
@@ -53,15 +49,12 @@ const AppDetail = (props) => {
             </Media>
             <div className="col">
               <CardTitle style={{ fontSize: 32 }}>{app.title}</CardTitle>
-              <CardSubtitle>Developer:{appDev.devId}</CardSubtitle>
-              <CardText style={{ marginTop: 2 }}>
-                Description: {app.summary}
-              </CardText>
+              <CardSubtitle>Developer:{app.dev}</CardSubtitle>
             </div>
           </div>
           <div className="row">
-            {number(app.installs, "download")}
-            {number(app.scoreText, "rating")}
+            {number(app.download, "download")}
+            {number(app.rating, "rating")}
             {number(59, "VULPIX score")}
           </div>
         </CardBody>

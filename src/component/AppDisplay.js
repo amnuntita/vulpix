@@ -12,10 +12,7 @@ const AppDisplay = (props) => {
         <AppDetail select={props.select} />
       </div>
       <div className="row">
-        <AppScore appId={props.select} />
-      </div>
-      <div className="row">
-        <AppScore />
+        <AppScore appId={props.select} cat="Device" />
       </div>
     </div>
   );

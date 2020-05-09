@@ -12,6 +12,7 @@ const Main = () => {
 
   const detail = ({ match }) => {
     setSelected(match.params.appId);
+    console.log(selectedId);
     return <AppDisplay select={selectedId} />;
   };
 
