@@ -9,26 +9,29 @@ const AppDisplay = (props) => {
   return (
     <div>
       <SideBar />
-      <div className="row">
-        <AppDetail select={props.select} />
-      </div>
-      <div className="appcard col-11 col-md-5" style={{ fontSize: 30 }}>
-        VULPIX analysis
-      </div>
-      <div className="row">
-        <AppScore appId={props.select} cat="Device" />
-      </div>
-      <div className="row">
-        <AppScore appId={props.select} cat="Simcard" />
-      </div>
-      <div className="row">
-        <AppScore appId={props.select} cat="User" />
-      </div>
-      <div className="row">
-        <AppScore appId={props.select} cat="Media" />
-      </div>
-      <div className="row">
-        <AppScore appId={props.select} cat="Location" />
+
+      <div style={{ fontFamily: "Nunito" }}>
+        <div className="row">
+          <AppDetail select={props.select} />
+        </div>
+        <div className="appcard col-11 col-md-5" style={{ fontSize: 30 }}>
+          VULPIX analysis
+        </div>
+        <div className="row">
+          <AppScore appId={props.select} cat="Device" />
+        </div>
+        <div className="row">
+          <AppScore appId={props.select} cat="Simcard" />
+        </div>
+        <div className="row">
+          <AppScore appId={props.select} cat="User" />
+        </div>
+        <div className="row">
+          <AppScore appId={props.select} cat="Media" />
+        </div>
+        <div className="row">
+          <AppScore appId={props.select} cat="Location" />
+        </div>
       </div>
     </div>
   );

@@ -34,8 +34,8 @@ const AppDetail = (props) => {
     //console.log(p);
     return (
       <div className="col-sm box">
-        {p}
-        <div style={{ fontSize: 20, textAlign: "center" }}>{text}</div>
+        <div>{p}</div>
+        {text}
       </div>
     );
   };
@@ -49,7 +49,9 @@ const AppDetail = (props) => {
               <Media src={app.icon} alt="Generic placeholder image" />
             </Media>
             <div className="col">
-              <CardTitle style={{ fontSize: 32 }}>{app.title}</CardTitle>
+              <CardTitle>
+                <h>{app.title}</h>
+              </CardTitle>
               <CardSubtitle>
                 <b>Developer:</b> {app.dev}
               </CardSubtitle>

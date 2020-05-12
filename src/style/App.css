@@ -40,9 +40,11 @@
 .box {
   border-radius: 10px;
   border: 1px solid black;
-  margin: 20px 10px 10px 10px;
-  font-size: 200%;
-  font-family: monospace;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 150%;
+  font-family: "Josefin Sans";
   text-align: center;
 }
 .smalltext {
@@ -65,8 +67,9 @@ hr {
   padding: 0;
 }
 
-bold {
-  font-weight: bold;
+h {
+  font-size: 250%;
+  font-family: "Raleway";
 }
 
 .ibox {
