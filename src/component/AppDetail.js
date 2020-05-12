@@ -10,6 +10,7 @@ import {
   Row,
 } from "reactstrap";
 import { baseUrl } from "../shared/BaseUrl.js";
+import { Link } from "react-router-dom";
 
 const AppDetail = (props) => {
   const [app, setApp] = useState(false);
@@ -49,7 +50,18 @@ const AppDetail = (props) => {
             </Media>
             <div className="col">
               <CardTitle style={{ fontSize: 32 }}>{app.title}</CardTitle>
-              <CardSubtitle>Developer:{app.dev}</CardSubtitle>
+              <CardSubtitle>
+                <b>Developer:</b> {app.dev}
+              </CardSubtitle>
+              <CardText>
+                <b>Category: </b> {app.cat}
+              </CardText>
+              <CardText>
+                <b>Description: </b> {app.desc}
+              </CardText>
+              <CardText>
+                <b>Privacy Policy: </b> <a href={app.policy}>{app.policy}</a>
+              </CardText>
             </div>
           </div>
           <div className="row">

@@ -35,17 +35,36 @@ const AppScore = (props) => {
   }, [props]);
 
   function DisplayPI({ PI, leak }) {
-    return (
-      <div className="ibox">
-        <div
-          className="col-md-2 col-5 picon"
-          style={({ marginLeft: 0 }, { marginRight: 0 }, { marginTop: 4 })}
-        >
-          <Media src={baseUrl + "public/icon/" + PI + ".png"} />
+    if (leak) {
+      return (
+        <div className="leakbox">
+          <div
+            className="col-md-2 col-5 picon"
+            style={({ marginLeft: 0 }, { marginRight: 0 }, { marginTop: 4 })}
+          >
+            <Media src={baseUrl + "public/icon/" + PI + ".png"} />
+          </div>
+          <div className="smalltext">{PI}</div>
         </div>
-        <div className="smalltext">{PI}</div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="ibox">
+          <div
+            className="col-md-2 col-5 picon"
+            style={
+              ({ marginLeft: 0 },
+              { marginRight: 0 },
+              { marginTop: 4 },
+              { opacity: 0.2 })
+            }
+          >
+            <Media src={baseUrl + "public/icon/" + PI + ".png"} />
+          </div>
+          <div className="smalltext">{PI}</div>
+        </div>
+      );
+    }
   }
 
   const DisplayIcon = (vulList) => {
@@ -61,7 +80,6 @@ const AppScore = (props) => {
       return (
         <div className="row" style={{ marginLeft: 30 }}>
           {Object.keys(vulList[0]).map((k) => {
-            console.log(k);
             if (k != "title") {
               return <DisplayPI PI={k} leak={vulList[0][k]} />;
             }
@@ -76,8 +94,9 @@ const AppScore = (props) => {
       <Card>
         <CardBody>
           <div className="row">
-            <CardTitle style={{ fontSize: 24 }}>{cat}</CardTitle>
+            <CardTitle className="cat">{cat}</CardTitle>
           </div>
+          <hr />
           {DisplayIcon(vulList)}
         </CardBody>
       </Card>

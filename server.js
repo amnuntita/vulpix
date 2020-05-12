@@ -22,10 +22,11 @@ app.use(cors());
 app.get("/app/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   let sql =
-    "SELECT `apk`,`title`,`rating`,`download`,`dev`,`icon` FROM app WHERE apk = " +
+    "SELECT DISTINCT `apk`,`title`,`rating`,`download`,`dev`,`icon`,`desc`,`cat`,`policy` FROM app WHERE apk = " +
     '"' +
     req.params.appId +
-    '"'; // คำสั่ง sql
+    '"' +
+    "LIMIT 0,1"; // คำสั่ง sql
   let query = db.query(sql, (err, results) => {
     // สั่ง Query คำสั่ง sql
     if (err) {
@@ -40,7 +41,7 @@ app.get("/app/:appId", (req, res) => {
 app.get("/suggest", (req, res) => {
   // Router เวลาเรียกใช้งาน
   let sql =
-    "SELECT `title` FROM app WHERE title LIKE " +
+    "SELECT DISTINCE `title` FROM app WHERE title LIKE " +
     '"' +
     req.query.q +
     '%" LIMIT 0,5'; // คำสั่ง sql
@@ -58,7 +59,7 @@ app.get("/suggest", (req, res) => {
 app.get("/search", (req, res) => {
   // Router เวลาเรียกใช้งาน
   let sql =
-    "SELECT `apk`,`title`,`rating`,`download`,`dev`,`icon` FROM app WHERE title LIKE " +
+    "SELECT DISTINCT `apk`,`title`,`rating`,`download`,`dev`,`icon` FROM app WHERE title LIKE " +
     '"%' +
     req.query.q +
     '%"'; // คำสั่ง sql

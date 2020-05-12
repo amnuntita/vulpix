@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import SideBar from "./SideBar.js";
+import NavBar from "./NavBar.js";
 import AppDetail from "./AppDetail.js";
 import AppScore from "./AppScore.js";
 import { baseUrl } from "../shared/BaseUrl.js";
@@ -10,6 +11,9 @@ const AppDisplay = (props) => {
       <SideBar />
       <div className="row">
         <AppDetail select={props.select} />
+      </div>
+      <div className="appcard col-11 col-md-5" style={{ fontSize: 30 }}>
+        VULPIX analysis
       </div>
       <div className="row">
         <AppScore appId={props.select} cat="Device" />
