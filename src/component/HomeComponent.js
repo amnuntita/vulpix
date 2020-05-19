@@ -11,10 +11,10 @@ const HomeComponent = (props) => {
       <NavBar />
       <div className="logo">
         <Media>
-          <Media src={baseUrl + "public/logo.png"} alt="vulpix" />
+          <Media src={baseUrl + "public/newlogo.png"} alt="vulpix" />
         </Media>
       </div>
-      <div>
+      <div className="homesearch">
         <Search />
       </div>
     </div>

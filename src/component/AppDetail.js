@@ -10,7 +10,8 @@ import {
   Row,
 } from "reactstrap";
 import { baseUrl } from "../shared/BaseUrl.js";
-import { Link } from "react-router-dom";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const AppDetail = (props) => {
   const [app, setApp] = useState(false);
@@ -28,14 +29,46 @@ const AppDetail = (props) => {
         .then((res) => console.log(appId));
     }
     fetchData();
-  }, []);
+  }, [appId]);
+
+  const numStyle = {
+    fontSize: 30,
+    marginTop: 20,
+  };
+  const lnumStyle = {
+    fontSize: 20,
+    marginTop: 30,
+  };
+  const scoreStyle = {
+    fontSize: 30,
+    marginTop: 30,
+  };
+  const vStyle = {
+    borderColor: "#0000a0",
+    borderWidth: 1,
+    backgroundColor: "#FFD801",
+  };
 
   const number = (p, text) => {
     //console.log(p);
+    var long = false;
+    if (app.download && text == "Download" && app.download.length > 4) {
+      var num = app.download.split(",")[0];
+      if (app.download.length > 13) {
+        var num = num.concat(app.download.split(",")[1]);
+        var long = true;
+      }
+      if (app.download.length > 8) num = num.concat("M+");
+      else num = num.concat("K+");
+    } else {
+      var num = p;
+    }
     return (
-      <div className="col-sm box">
-        <div>{p}</div>
-        {text}
+      <div className="col-sm">
+        <div className="box">
+          <div style={long ? lnumStyle : numStyle}>{num}</div>
+          {text}
+        </div>
       </div>
     );
   };
@@ -66,10 +99,19 @@ const AppDetail = (props) => {
               </CardText>
             </div>
           </div>
-          <div className="row">
-            {number(app.download, "download")}
-            {number(app.rating, "rating")}
-            {number(59, "VULPIX score")}
+          <hr />
+          <div
+            className="row"
+            style={({ marginRight: 20 }, { marginLeft: 20 })}
+          >
+            {number(app.download, "Download")}
+            {number(app.rating, "Rating")}
+            <div className="col-sm">
+              <div className="box" style={vStyle}>
+                <div style={scoreStyle}>32</div>
+                <div style={{ fontSize: 15 }}>VULPIX score</div>
+              </div>
+            </div>
           </div>
         </CardBody>
       </Card>

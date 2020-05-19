@@ -14,8 +14,8 @@ const AppDisplay = (props) => {
         <div className="row">
           <AppDetail select={props.select} />
         </div>
-        <div className="appcard col-11 col-md-5" style={{ fontSize: 30 }}>
-          VULPIX analysis
+        <div className="appcard col-11 col-md-5" style={{ fontSize: 26 }}>
+          VULPIX analysis - detected leaked information
         </div>
         <div className="row">
           <AppScore appId={props.select} cat="Device" />

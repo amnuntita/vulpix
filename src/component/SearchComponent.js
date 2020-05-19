@@ -2,40 +2,39 @@ import React, { useState, useEffect } from "react";
 import { Input, Col, Button, Row, Form } from "reactstrap";
 import { baseUrl } from "../shared/BaseUrl.js";
 import { Link } from "react-router-dom";
+import SuggestComponent from "./SuggestComponent.js";
 
 const Search = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchValue, setSearchValue] = useState([]);
 
-  const handleValue = (term) => {
-    async function fetchSuggest() {
-      const res = await fetch(baseUrl + "suggest/?q=" + term);
-      res.json().then((res) => {
-        setSearchValue(res);
-      });
-    }
-    fetchSuggest();
-  };
-  const handleInputChange = (e) => {
+  async function handleInputChange(e) {
     setSearchTerm(e.target.value);
-    console.log(searchTerm);
-    if (searchTerm.length >= 2) {
-      handleValue(searchTerm);
-      console.log(searchValue);
-    }
-  };
+  }
 
-  useEffect(() => {});
+  function keyHandle(e) {
+    if (e.key == "Enter") {
+      window.location.href = `/result/${searchTerm}`;
+    }
+  }
 
   return (
     <div>
-      <div className="search">
-        <Input type="text" onChange={handleInputChange} value={searchTerm} />
+      <Input
+        type="text"
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={keyHandle}
+        value={searchTerm}
+        type="text"
+      />
+      <div className="suggest">
+        <SuggestComponent term={searchTerm} />
       </div>
-      <div className="searchButton">
-        <Button>
-          <Link to={`/result/${searchTerm}`}>Go</Link>
-        </Button>
+      <div>
+        <div className="searchButton">
+          <Button>
+            <Link to={`/result/${searchTerm}`}>Go</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

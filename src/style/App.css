@@ -18,6 +18,8 @@
 
 .res {
   transform: translate(50%);
+  position: relative;
+  z-index: 1;
 }
 
 .icon img {
@@ -28,25 +30,41 @@
 .picon img {
   height: 64px;
   width: 64px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 4px;
 }
 
 .logo img {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 40%;
-  transform: translate(-50%, -50%);
+  top: 35%;
+  width: 50%;
+  transform: translate(-50%, -30%);
 }
 .box {
-  border-radius: 10px;
-  border: 1px solid black;
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 5px;
-  font-size: 150%;
-  font-family: "Josefin Sans";
+  border-radius: 50%;
+  border: 10px solid #0000a0;
+  margin-top: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 100%;
+  font-family: "Nunito";
   text-align: center;
+  width: 125px;
+  height: 125px;
 }
+
+.score {
+  border-radius: 50%;
+  background-color: green;
+  font-size: 100%;
+  font-family: "Nunito";
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}
+
 .smalltext {
   font-size: xx-small;
   text-align: center;
@@ -68,7 +86,7 @@ hr {
 }
 
 h {
-  font-size: 250%;
+  font-size: 200%;
   font-family: "Raleway";
 }
 
@@ -76,25 +94,26 @@ h {
   border: thin none gainsboro;
   border-radius: 5%;
   margin-top: 4px;
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 4px;
+  margin-right: 4px;
   margin-bottom: 2px;
-  width: 95px;
-  height: 95px;
+  width: 98px;
+  height: 98px;
+  opacity: 0.4;
 }
 .leakbox {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 5%;
   margin-top: 4px;
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 4px;
+  margin-right: 4px;
   margin-bottom: 2px;
-  width: 95px;
-  height: 95px;
+  width: 98px;
+  height: 98px;
 }
 
 .sidebar {
-  background-color: #131b1d;
+  background-color: #000850;
   align-items: left;
   height: 100%;
   position: fixed;
@@ -102,20 +121,35 @@ h {
   left: 0;
   width: 10%;
 }
-.search {
-  position: absolute;
-  width: 50%;
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%, -40%);
+.homesearch {
+  position: fixed;
+  width: 40%;
+  left: 48%;
+  top: 60%;
+  margin-bottom: 0;
+  transform: translate(-48%, -40%);
 }
 .searchButton {
   position: absolute;
-  width: 50%;
-  left: 50%;
-  top: 70%;
-  transform: translate(50%, -40%);
+  width: 40%;
+  left: 80%;
+  top: 55%;
+  transform: translate(50%, -55%);
 }
+
+.resultSearch {
+  top: 20%;
+  left: 40%;
+  width: 30%;
+  transform: translate(40%, 20%);
+}
+
+.suggest {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
 @media screen and (max-width: 700px) {
   .sidebar {
     width: 100%;

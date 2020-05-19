@@ -8,6 +8,11 @@ import {
   Col,
   Row,
   Media,
+  Button,
+  UncontrolledPopover,
+  Popover,
+  PopoverHeader,
+  PopoverBody,
 } from "reactstrap";
 import { baseUrl } from "../shared/BaseUrl.js";
 
@@ -16,6 +21,8 @@ const AppScore = (props) => {
   const [res, setRes] = useState();
   const apk = baseUrl + "res?appId=" + props.appId + ".apk&q=" + props.cat;
   const cat = props.cat == "Media" ? "Media and Device Usage" : props.cat;
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const toggle = () => setPopoverOpen(!popoverOpen);
 
   useEffect(() => {
     async function fetchVul() {
@@ -35,36 +42,14 @@ const AppScore = (props) => {
   }, [props]);
 
   function DisplayPI({ PI, leak }) {
-    if (leak) {
-      return (
-        <div className="leakbox">
-          <div
-            className="col-md-2 col-5 picon"
-            style={({ marginLeft: 0 }, { marginRight: 0 }, { marginTop: 4 })}
-          >
-            <Media src={baseUrl + "public/icon/" + PI + ".png"} />
-          </div>
-          <div className="smalltext">{PI}</div>
+    return (
+      <div className={leak ? "leakbox" : "ibox"} id="icon">
+        <div className="col-md-2 col-5 picon">
+          <Media src={baseUrl + "public/icon/" + PI + ".png"} />
         </div>
-      );
-    } else {
-      return (
-        <div className="ibox">
-          <div
-            className="col-md-2 col-5 picon"
-            style={
-              ({ marginLeft: 0 },
-              { marginRight: 0 },
-              { marginTop: 4 },
-              { opacity: 0.2 })
-            }
-          >
-            <Media src={baseUrl + "public/icon/" + PI + ".png"} />
-          </div>
-          <div className="smalltext">{PI}</div>
-        </div>
-      );
-    }
+        <div className="smalltext">{PI}</div>
+      </div>
+    );
   }
 
   const DisplayIcon = (vulList) => {
@@ -97,7 +82,7 @@ const AppScore = (props) => {
             <CardTitle className="cat">{cat}</CardTitle>
           </div>
           <hr />
-          {DisplayIcon(vulList)}
+          <div>{DisplayIcon(vulList)}</div>
         </CardBody>
       </Card>
     </div>

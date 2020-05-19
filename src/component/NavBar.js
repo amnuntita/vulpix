@@ -9,13 +9,13 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Media,
 } from "reactstrap";
 
 const NavBar = () => {
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand>VULPIX</NavbarBrand>
+      <Navbar style={{ backgroundColor: "#000850" }} expand="md">
         <Nav className="mr-auto" navbar>
           <NavItem>
             <NavLink href="/home">Home</NavLink>

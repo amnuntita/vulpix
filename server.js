@@ -41,7 +41,7 @@ app.get("/app/:appId", (req, res) => {
 app.get("/suggest", (req, res) => {
   // Router เวลาเรียกใช้งาน
   let sql =
-    "SELECT DISTINCE `title` FROM app WHERE title LIKE " +
+    "SELECT DISTINCT `title` FROM app WHERE title LIKE " +
     '"' +
     req.query.q +
     '%" LIMIT 0,5'; // คำสั่ง sql
