@@ -23,9 +23,11 @@ const ResultComponent = (props) => {
   const query = "search/?q=" + props.query;
 
   const textStyle = {
-    marginLeft: 200,
-    marginTop: 60,
-    fontSize: 30,
+    marginLeft: "25%",
+    marginTop: "10%",
+    marginBottom: "3%",
+    fontSize: 40,
+    fontFamily: "Nunito",
   };
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const ResultComponent = (props) => {
         <div style={textStyle}>
           {num} results for keyword "{props.query}"
         </div>
-        <div className="row" style={{ marginTop: 20 }}>
+        <div className="row" style={{ marginLeft: "10%" }}>
           {resList.map((app) => {
             return (
               <div className="col-12 col-md-3 m-1">
@@ -63,18 +65,18 @@ const ResultComponent = (props) => {
                   <Card key={app.apk}>
                     <CardBody>
                       <div className="row">
-                        <Link to={`/detail/${app.apk}`}>
-                          <Media left className="icon">
-                            <Media
-                              src={app.icon}
-                              alt="Generic placeholder image"
-                            />
-                          </Media>
-                        </Link>
+                        <Media left className="icon">
+                          <Media
+                            src={app.icon}
+                            alt="Generic placeholder image"
+                          />
+                        </Media>
                         <div className="col">
-                          <CardTitle style={{ fontSize: 20 }}>
-                            {app.title}
-                          </CardTitle>
+                          <Link to={`/detail/${app.apk}`}>
+                            <CardTitle style={{ fontSize: 20 }}>
+                              {app.title}
+                            </CardTitle>
+                          </Link>
                           <CardSubtitle>Developer: {app.dev}</CardSubtitle>
                         </div>
                       </div>

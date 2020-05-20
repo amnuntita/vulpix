@@ -43,7 +43,7 @@ const AppScore = (props) => {
 
   function DisplayPI({ PI, leak }) {
     return (
-      <div className={leak ? "leakbox" : "ibox"} id="icon">
+      <div className={leak ? "leakbox" : "ibox"}>
         <div className="col-md-2 col-5 picon">
           <Media src={baseUrl + "public/icon/" + PI + ".png"} />
         </div>

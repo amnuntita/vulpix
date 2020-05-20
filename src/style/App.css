@@ -138,10 +138,10 @@ h {
 }
 
 .resultSearch {
-  top: 20%;
-  left: 40%;
-  width: 30%;
-  transform: translate(40%, 20%);
+  top: 70%;
+  left: 55%;
+  width: 50%;
+  transform: translate(55%, 50%);
 }
 
 .suggest {
@@ -164,7 +164,8 @@ h {
     width: 70%;
   }
   .res {
-    transform: translate(0%);
+    left: 20;
+    transform: translate(-8%);
   }
 }
 
