@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -6,33 +6,87 @@ import {
   CardSubtitle,
   CardText,
   Col,
+  Row,
+  Media,
+  Button,
+  UncontrolledPopover,
+  Popover,
+  PopoverHeader,
+  PopoverBody,
 } from "reactstrap";
+import { baseUrl } from "../shared/BaseUrl.js";
 
-function AppScore() {
-  const AppScore = () => {
+const AppScore = (props) => {
+  const [vulList, setList] = useState([]);
+  const [res, setRes] = useState();
+  const apk = baseUrl + "res?appId=" + props.appId + ".apk&q=" + props.cat;
+  const cat = props.cat == "Media" ? "Media and Device Usage" : props.cat;
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const toggle = () => setPopoverOpen(!popoverOpen);
+
+  useEffect(() => {
+    async function fetchVul() {
+      const res = await fetch(apk);
+      res
+        .json()
+        .then((res) => {
+          setList(res);
+          return vulList;
+        })
+        .then((vulList) => {
+          setRes(vulList[0]);
+        });
+    }
+
+    fetchVul();
+  }, [props]);
+
+  function DisplayPI({ PI, leak }) {
     return (
-      <div className="appcard col-11 col-md-5">
-        <Card>
-          <CardBody>
-            <CardTitle>Application Name</CardTitle>
-            <CardSubtitle>Developer</CardSubtitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-              nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-              occaecat cupidatat non proident, sunt in culpa qui officia
-              deserunt mollit anim id est laborum.
-            </CardText>
-          </CardBody>
-        </Card>
+      <div className={leak ? "leakbox" : "ibox"}>
+        <div className="col-md-2 col-5 picon">
+          <Media src={baseUrl + "public/icon/" + PI + ".png"} />
+        </div>
+        <div className="smalltext">{PI}</div>
       </div>
     );
+  }
+
+  const DisplayIcon = (vulList) => {
+    if (vulList.length == 0) {
+      return (
+        <Col>
+          <CardText style={{ textAlign: "center" }}>
+            ----- No VULPIX result for this app -----
+          </CardText>
+        </Col>
+      );
+    } else {
+      return (
+        <div className="row" style={{ marginLeft: 30 }}>
+          {Object.keys(vulList[0]).map((k) => {
+            if (k != "title") {
+              return <DisplayPI PI={k} leak={vulList[0][k]} />;
+            }
+          })}
+        </div>
+      );
+    }
   };
-  return AppScore();
-}
+
+  return (
+    <div className="appcard col-11 col-md-5">
+      <Card>
+        <CardBody>
+          <div className="row">
+            <CardTitle className="cat">{cat}</CardTitle>
+          </div>
+          <hr />
+          <div>{DisplayIcon(vulList)}</div>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
 
 export default AppScore;

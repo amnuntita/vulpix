@@ -8,11 +8,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.appcard {
-  margin: 0 auto;
-  float: none;
-  margin-top: 40px;
+.textstyle {
+  margin-left: 15%;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  font-size: 40px;
+  font-family: "Nunito";
 }
 
 .appcard {
@@ -22,32 +23,104 @@
   margin-top: 40px;
 }
 
+.res {
+  transform: translate(50%);
+  position: relative;
+  z-index: 1;
+}
+
 .icon img {
   height: 100px;
   width: 100px;
 }
 
-.small {
-  font-size: 20%;
+.picon img {
+  height: 64px;
+  width: 64px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 4px;
 }
+
 .logo img {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 40%;
-  transform: translate(-50%, -50%);
+  top: 35%;
+  width: 50%;
+  transform: translate(-50%, -30%);
 }
 .box {
-  border-radius: 10px;
-  border: 1px solid black;
-  margin: 20px 10px 10px 10px;
-  font-size: 200%;
-  font-family: monospace;
+  border-radius: 50%;
+  border: 10px solid #0000a0;
+  margin-top: 10px;
+  margin-left: 25%;
+  margin-right: 40%;
+  font-size: 100%;
+  font-family: "Nunito";
   text-align: center;
+  width: 125px;
+  height: 125px;
+}
+
+.score {
+  border-radius: 50%;
+  background-color: green;
+  font-size: 100%;
+  font-family: "Nunito";
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}
+
+.smalltext {
+  font-size: xx-small;
+  text-align: center;
+  margin-top: 3px;
+}
+.cat {
+  font-size: 200%;
+  margin-left: 20px;
+  padding-bottom: 25px;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin-top: 50px;
+  padding: 0;
+}
+
+h {
+  font-size: 200%;
+  font-family: "Raleway";
+}
+
+.ibox {
+  border: thin none gainsboro;
+  border-radius: 5%;
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  width: 98px;
+  height: 98px;
+  opacity: 0.4;
+}
+.leakbox {
+  border: 2px solid black;
+  border-radius: 5%;
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  width: 98px;
+  height: 98px;
 }
 
 .sidebar {
-  background-color: #131b1d;
+  background-color: #000850;
   align-items: left;
   height: 100%;
   position: fixed;
@@ -55,13 +128,35 @@
   left: 0;
   width: 10%;
 }
-.search {
-  position: absolute;
-  width: 50%;
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%, -70%);
+.homesearch {
+  position: fixed;
+  width: 40%;
+  left: 48%;
+  top: 60%;
+  margin-bottom: 0;
+  transform: translate(-48%, -40%);
 }
+.searchButton {
+  position: absolute;
+  width: 40%;
+  left: 80%;
+  top: 55%;
+  transform: translate(50%, -55%);
+}
+
+.resultSearch {
+  top: 70%;
+  left: 55%;
+  width: 50%;
+  transform: translate(55%, 50%);
+}
+
+.suggest {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
 @media screen and (max-width: 700px) {
   .sidebar {
     width: 100%;
@@ -69,12 +164,40 @@
     position: relative;
   }
   .logo img {
+    width: 80%;
+    top: 35%;
+  }
+  .homesearch {
+    top: 50%;
+    left: 45%;
     width: 60%;
   }
-  .search {
-    top: 60%;
-    width: 70%;
+  .res {
+    left: 20%;
+    transform: translateX(-18%);
+    width: 90%;
   }
+  .resultSearch {
+    top: 70%;
+    left: 50%;
+    width: 50%;
+    margin-bottom: 30%;
+    transform: translate(40%, 50%);
+  }
+  .textstyle {
+    margin-left: 15%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    font-size: 40px;
+    font-family: "Nunito";
+  }
+}
+
+.credit {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
 }
 
 @keyframes App-logo-spin {
