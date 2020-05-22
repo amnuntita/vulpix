@@ -8,6 +8,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.textstyle {
+  margin-left: 15%;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  font-size: 40px;
+  font-family: "Nunito";
+}
 
 .appcard {
   margin: 0 auto;
@@ -46,8 +53,8 @@
   border-radius: 50%;
   border: 10px solid #0000a0;
   margin-top: 10px;
-  margin-left: 2px;
-  margin-right: 2px;
+  margin-left: 25%;
+  margin-right: 40%;
   font-size: 100%;
   font-family: "Nunito";
   text-align: center;
@@ -157,16 +164,40 @@ h {
     position: relative;
   }
   .logo img {
+    width: 80%;
+    top: 35%;
+  }
+  .homesearch {
+    top: 50%;
+    left: 45%;
     width: 60%;
   }
-  .search {
-    top: 60%;
-    width: 70%;
-  }
   .res {
-    left: 20;
-    transform: translate(-8%);
+    left: 20%;
+    transform: translateX(-18%);
+    width: 90%;
   }
+  .resultSearch {
+    top: 70%;
+    left: 50%;
+    width: 50%;
+    margin-bottom: 30%;
+    transform: translate(40%, 50%);
+  }
+  .textstyle {
+    margin-left: 15%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    font-size: 40px;
+    font-family: "Nunito";
+  }
+}
+
+.credit {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
 }
 
 @keyframes App-logo-spin {

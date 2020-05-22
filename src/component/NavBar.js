@@ -11,6 +11,7 @@ import {
   DropdownItem,
   Media,
 } from "reactstrap";
+import Search from "./SearchComponent.js";
 
 const NavBar = () => {
   return (

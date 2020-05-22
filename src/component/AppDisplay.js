@@ -1,14 +1,12 @@
 import React, { useState, useEffect, Component } from "react";
-import SideBar from "./SideBar.js";
 import NavBar from "./NavBar.js";
 import AppDetail from "./AppDetail.js";
 import AppScore from "./AppScore.js";
-import { baseUrl } from "../shared/BaseUrl.js";
 
 const AppDisplay = (props) => {
   return (
     <div>
-      <SideBar />
+      <NavBar />
 
       <div style={{ fontFamily: "Nunito" }}>
         <div className="row">

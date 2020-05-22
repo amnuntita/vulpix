@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../shared/BaseUrl.js";
-import SideBar from "./SideBar.js";
+import NavBar from "./NavBar.js";
 import SearchComponent from "./SearchComponent.js";
 
 const ResultComponent = (props) => {
@@ -21,14 +21,6 @@ const ResultComponent = (props) => {
   const [resList, setList] = useState([]);
   const [num, setNum] = useState(false);
   const query = "search/?q=" + props.query;
-
-  const textStyle = {
-    marginLeft: "25%",
-    marginTop: "10%",
-    marginBottom: "3%",
-    fontSize: 40,
-    fontFamily: "Nunito",
-  };
 
   useEffect(() => {
     async function fetchData() {
@@ -54,10 +46,10 @@ const ResultComponent = (props) => {
   function DisplayApp() {
     return (
       <div>
-        <div style={textStyle}>
+        <div className="textstyle">
           {num} results for keyword "{props.query}"
         </div>
-        <div className="row" style={{ marginLeft: "10%" }}>
+        <div className="row">
           {resList.map((app) => {
             return (
               <div className="col-12 col-md-3 m-1">
@@ -93,7 +85,7 @@ const ResultComponent = (props) => {
 
   return (
     <div>
-      <SideBar />
+      <NavBar />
       <div className="resultSearch">
         <SearchComponent />
       </div>

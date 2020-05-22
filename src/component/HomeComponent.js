@@ -8,6 +8,19 @@ import { logDOM } from "@testing-library/react";
 const HomeComponent = (props) => {
   return (
     <div>
+      <div className="credit">
+        Icons made by{" "}
+        <a
+          href="https://www.flaticon.com/authors/smashicons"
+          title="Smashicons"
+        >
+          Smashicons
+        </a>{" "}
+        from{" "}
+        <a href="https://www.flaticon.com/" title="Flaticon">
+          www.flaticon.com
+        </a>
+      </div>
       <NavBar />
       <div className="logo">
         <Media>

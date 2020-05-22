@@ -100,10 +100,7 @@ const AppDetail = (props) => {
             </div>
           </div>
           <hr />
-          <div
-            className="row"
-            style={({ marginRight: 20 }, { marginLeft: 20 })}
-          >
+          <div className="row">
             {number(app.download, "Download")}
             {number(app.rating, "Rating")}
             <div className="col-sm">

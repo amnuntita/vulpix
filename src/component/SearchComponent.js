@@ -31,7 +31,7 @@ const Search = (props) => {
       </div>
       <div>
         <div className="searchButton">
-          <Button>
+          <Button style={{ backgroundColor: "#000850" }}>
             <Link to={`/result/${searchTerm}`}>Go</Link>
           </Button>
         </div>

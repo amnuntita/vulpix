@@ -1,5 +1,6 @@
 import React from "react";
 import { Label, NavItem } from "reactstrap";
+import Search from "./SearchComponent.js";
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
@@ -13,6 +14,7 @@ const SideBar = () => {
         <Link className="nav-link" to="/about">
           About
         </Link>
+        <Search />
       </nav>
     </div>
   );

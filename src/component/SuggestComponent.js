@@ -30,7 +30,7 @@ const SuggestComponent = (props) => {
   }
 
   return (
-    <div>
+    <div style={{ fontSize: "small" }}>
       <ListSuggest />
     </div>
   );
