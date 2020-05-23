@@ -103,6 +103,7 @@ if (process.env.NODE_ENV === "production") {
 
 //app.use("/api/", router);
 app.use("/public", Express.static(__dirname + "/public"));
+app.use(Express.static(__dirname + "/"));
 
 app.listen(port, function () {
   console.log("Server started on port", port);
