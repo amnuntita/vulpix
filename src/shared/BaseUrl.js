@@ -1,1 +1,1 @@
-export const baseUrl = "https://vulpix-cucp.herokuapp.com/public";
+export const baseUrl = "https://vulpix-cucp.herokuapp.com";
