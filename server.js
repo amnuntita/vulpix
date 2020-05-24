@@ -97,7 +97,7 @@ app.get("/res/", (req, res) => {
 });
 
 if (process.env.NODE_ENV === "production") {
-  app.use(Express.static("build"));
+  app.use("/public", Express.static(__dirname + "build"));
   app.get("*", (req, res) => {
     res.sendFile(path.join("build", "index.html"));
   });
