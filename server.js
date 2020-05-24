@@ -4,6 +4,8 @@ const Express = require("express");
 const mysql = require("mysql");
 //const router = require("./lib/index.js");
 var cors = require("cors");
+const path = require("path");
+const publicPath = path.join(__dirname, "..", "public");
 
 const db = mysql.createConnection({
   // config ค่าการเชื่อมต่อฐานข้อมูล
@@ -103,6 +105,7 @@ if (process.env.NODE_ENV === "production") {
 
 //app.use("/api/", router);
 app.use("/public", Express.static(__dirname + "/public"));
+
 //app.use(Express.static(__dirname + "/"));
 
 app.listen(port, function () {
