@@ -4,6 +4,7 @@ import AppDisplay from "./AppDisplay.js";
 import HomeComponent from "./HomeComponent.js";
 import AboutComponent from "./AboutComponent.js";
 import ResultComponent from "./ResultComponent.js";
+import NotFoundPage from "./NotFoundPage.js";
 
 const Main = () => {
   const [selectedId, setSelected] = useState(false);
@@ -27,12 +28,13 @@ const Main = () => {
   return (
     <div>
       <Switch>
-        <Route path="/home">
+        <Route exact path="/">
           <HomeComponent />
         </Route>
         <Route path="/about" component={AboutComponent} />
         <Route path="/detail/:appId" component={detail} />
         <Route path="/result/:query" component={result} />
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
