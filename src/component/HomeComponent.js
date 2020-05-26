@@ -27,7 +27,7 @@ const HomeComponent = (props) => {
       <IconCredit />
       <div className="logo">
         <Media>
-          <Media src={baseUrl + "public/newlogo.png"} alt="vulpix" />
+          <Media src={baseUrl + "/newlogo.png"} alt="vulpix" />
         </Media>
       </div>
       <div className="homesearch">

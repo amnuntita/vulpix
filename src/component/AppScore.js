@@ -29,7 +29,7 @@ const AppScore = (props) => {
     return (
       <div className={leak ? "leakbox" : "ibox"}>
         <div className="col-md-2 col-5 picon">
-          <Media src={baseUrl + "public/icon/" + PI + ".png"} />
+          <Media src={baseUrl + "/icon/" + PI + ".png"} />
         </div>
         <div className="smalltext">{PI.split("_").join(" ")}</div>
       </div>
