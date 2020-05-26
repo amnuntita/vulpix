@@ -24,7 +24,7 @@ const HomeComponent = (props) => {
       <NavBar />
       <div className="logo">
         <Media>
-          <Media src={baseUrl + "/newlogo.png"} alt="vulpix" />
+          <Media src={baseUrl + "public/newlogo.png"} alt="vulpix" />
         </Media>
       </div>
       <div className="homesearch">

@@ -33,7 +33,7 @@ const ResultComponent = (props) => {
           return res;
         })
         .then((res) => {
-          setList(res);
+          setList(res.rows);
           return resList;
         })
         .then((resList) => {

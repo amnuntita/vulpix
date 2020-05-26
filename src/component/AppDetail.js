@@ -23,7 +23,7 @@ const AppDetail = (props) => {
       res
         .json()
         .then((res) => {
-          setApp(res[0]);
+          setApp(res.rows[0]);
           return res;
         })
         .then((res) => console.log(appId));

@@ -4,7 +4,6 @@ import AppDisplay from "./AppDisplay.js";
 import HomeComponent from "./HomeComponent.js";
 import AboutComponent from "./AboutComponent.js";
 import ResultComponent from "./ResultComponent.js";
-import Test from "./test.js";
 
 const Main = () => {
   const [selectedId, setSelected] = useState(false);

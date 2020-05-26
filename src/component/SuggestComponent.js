@@ -10,7 +10,7 @@ const SuggestComponent = (props) => {
     async function fetchSuggest() {
       const res = await fetch(baseUrl + "suggest/?q=" + term);
       res.json().then((res) => {
-        setSuggest(res);
+        setSuggest(res.rows);
       });
     }
     fetchSuggest();

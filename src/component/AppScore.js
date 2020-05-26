@@ -19,7 +19,7 @@ import { baseUrl } from "../shared/BaseUrl.js";
 const AppScore = (props) => {
   const [vulList, setList] = useState([]);
   const [res, setRes] = useState();
-  const apk = baseUrl + "res?appId=" + props.appId + ".apk&q=" + props.cat;
+  const apk = baseUrl + props.cat + "/" + props.appId + ".apk";
   const cat = props.cat == "Media" ? "Media and Device Usage" : props.cat;
   const [popoverOpen, setPopoverOpen] = useState(false);
   const toggle = () => setPopoverOpen(!popoverOpen);
@@ -30,7 +30,7 @@ const AppScore = (props) => {
       res
         .json()
         .then((res) => {
-          setList(res);
+          setList(res.rows);
           return vulList;
         })
         .then((vulList) => {
@@ -45,7 +45,7 @@ const AppScore = (props) => {
     return (
       <div className={leak ? "leakbox" : "ibox"}>
         <div className="col-md-2 col-5 picon">
-          <Media src={baseUrl + "/icon/" + PI + ".png"} />
+          <Media src={baseUrl + "public/icon/" + PI + ".png"} />
         </div>
         <div className="smalltext">{PI}</div>
       </div>
@@ -66,7 +66,7 @@ const AppScore = (props) => {
         <div className="row" style={{ marginLeft: 30 }}>
           {Object.keys(vulList[0]).map((k) => {
             if (k != "title") {
-              return <DisplayPI PI={k} leak={vulList[0][k]} />;
+              return <DisplayPI PI={k} leak={parseInt(vulList[0][k])} />;
             }
           })}
         </div>
