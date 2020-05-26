@@ -22,6 +22,8 @@ const Search = ({ history }) => {
     }
   }, [searchTerm]);
 
+  console.log(`/suggest/?q=${searchTerm}`);
+
   const handleInputChange = async (e) => {
     setSearchTerm(e.target.value);
   };

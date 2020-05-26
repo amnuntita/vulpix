@@ -157,7 +157,7 @@ app.get("/user/:appId", (req, res) => {
 
 if (process.env.NODE_ENV === "production") {
   app.use(Express.static("build"));
-  app.get("*", (req, res) => {
+  app.get("/", (req, res) => {
     res.sendFile(path.join("build", "index.html"));
   });
 }
