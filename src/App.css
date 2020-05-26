@@ -73,7 +73,7 @@
 }
 
 .smalltext {
-  font-size: xx-small;
+  font-size: x-small;
   text-align: center;
   margin-top: 3px;
 }
@@ -105,7 +105,7 @@ h {
   margin-right: 4px;
   margin-bottom: 2px;
   width: 98px;
-  height: 98px;
+  height: 100px;
   opacity: 0.4;
 }
 .leakbox {
@@ -116,7 +116,7 @@ h {
   margin-right: 4px;
   margin-bottom: 2px;
   width: 98px;
-  height: 98px;
+  height: 100px;
 }
 
 .sidebar {

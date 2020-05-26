@@ -5,6 +5,7 @@ import HomeComponent from "./HomeComponent.js";
 import AboutComponent from "./AboutComponent.js";
 import ResultComponent from "./ResultComponent.js";
 import NotFoundPage from "./NotFoundPage.js";
+import NavBar from "./NavBar.js";
 
 const Main = () => {
   const [selectedId, setSelected] = useState(false);
@@ -25,8 +26,13 @@ const Main = () => {
     );
   };
 
+  useEffect(() => {
+    document.title = "VULPIX";
+  }, []);
+
   return (
     <div>
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <HomeComponent />

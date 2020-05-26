@@ -6,12 +6,26 @@ import {
   CardSubtitle,
   CardText,
   Media,
-  Col,
-  Row,
 } from "reactstrap";
 import { baseUrl } from "../shared/BaseUrl.js";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
+
+const numStyle = {
+  fontSize: 30,
+  marginTop: 20,
+};
+const lnumStyle = {
+  fontSize: 20,
+  marginTop: 30,
+};
+const scoreStyle = {
+  fontSize: 30,
+  marginTop: 30,
+};
+const vStyle = {
+  borderColor: "#0000a0",
+  borderWidth: 1,
+  backgroundColor: "#FFD801",
+};
 
 const AppDetail = (props) => {
   const [app, setApp] = useState(false);
@@ -20,34 +34,13 @@ const AppDetail = (props) => {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(baseUrl + "app/" + appId);
-      res
-        .json()
-        .then((res) => {
-          setApp(res.rows[0]);
-          return res;
-        })
-        .then((res) => console.log(appId));
+      res.json().then((res) => {
+        setApp(res.rows[0]);
+        return res;
+      });
     }
     fetchData();
   }, [appId]);
-
-  const numStyle = {
-    fontSize: 30,
-    marginTop: 20,
-  };
-  const lnumStyle = {
-    fontSize: 20,
-    marginTop: 30,
-  };
-  const scoreStyle = {
-    fontSize: 30,
-    marginTop: 30,
-  };
-  const vStyle = {
-    borderColor: "#0000a0",
-    borderWidth: 1,
-    backgroundColor: "#FFD801",
-  };
 
   const number = (p, text) => {
     //console.log(p);

@@ -6,8 +6,6 @@ import AppScore from "./AppScore.js";
 const AppDisplay = (props) => {
   return (
     <div>
-      <NavBar />
-
       <div style={{ fontFamily: "Nunito" }}>
         <div className="row">
           <AppDetail select={props.select} />

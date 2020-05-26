@@ -85,7 +85,6 @@ const ResultComponent = (props) => {
 
   return (
     <div>
-      <NavBar />
       <div className="resultSearch">
         <SearchComponent />
       </div>

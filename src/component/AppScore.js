@@ -1,28 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Col,
-  Row,
-  Media,
-  Button,
-  UncontrolledPopover,
-  Popover,
-  PopoverHeader,
-  PopoverBody,
-} from "reactstrap";
+import { Card, CardBody, CardTitle, CardText, Col, Media } from "reactstrap";
 import { baseUrl } from "../shared/BaseUrl.js";
 
 const AppScore = (props) => {
   const [vulList, setList] = useState([]);
-  const [res, setRes] = useState();
-  const apk = baseUrl + props.cat + "/" + props.appId + ".apk";
+  //const [res, setRes] = useState();
+  const apk = baseUrl + props.cat + "/" + props.appId;
   const cat = props.cat == "Media" ? "Media and Device Usage" : props.cat;
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  const toggle = () => setPopoverOpen(!popoverOpen);
 
   useEffect(() => {
     async function fetchVul() {
@@ -30,16 +14,16 @@ const AppScore = (props) => {
       res
         .json()
         .then((res) => {
-          setList(res.rows);
+          setList(res.rows[0]);
           return vulList;
         })
         .then((vulList) => {
-          setRes(vulList[0]);
+          console.log(vulList);
         });
     }
 
     fetchVul();
-  }, [props]);
+  }, [props.appId]);
 
   function DisplayPI({ PI, leak }) {
     return (
@@ -47,7 +31,7 @@ const AppScore = (props) => {
         <div className="col-md-2 col-5 picon">
           <Media src={baseUrl + "public/icon/" + PI + ".png"} />
         </div>
-        <div className="smalltext">{PI}</div>
+        <div className="smalltext">{PI.split("_").join(" ")}</div>
       </div>
     );
   }
@@ -64,9 +48,9 @@ const AppScore = (props) => {
     } else {
       return (
         <div className="row" style={{ marginLeft: 30 }}>
-          {Object.keys(vulList[0]).map((k) => {
+          {Object.keys(vulList).map((k) => {
             if (k != "title") {
-              return <DisplayPI PI={k} leak={parseInt(vulList[0][k])} />;
+              return <DisplayPI PI={k} leak={parseInt(vulList[k])} />;
             }
           })}
         </div>

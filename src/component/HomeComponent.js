@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Media } from "reactstrap";
-import NavBar from "./NavBar.js";
 import Search from "./SearchComponent.js";
 import { baseUrl } from "../shared/BaseUrl.js";
 import { logDOM } from "@testing-library/react";
 
 const HomeComponent = (props) => {
-  return (
-    <div>
+  const IconCredit = () => {
+    return (
       <div className="credit">
         Icons made by{" "}
         <a
@@ -21,7 +20,11 @@ const HomeComponent = (props) => {
           www.flaticon.com
         </a>
       </div>
-      <NavBar />
+    );
+  };
+  return (
+    <div>
+      <IconCredit />
       <div className="logo">
         <Media>
           <Media src={baseUrl + "public/newlogo.png"} alt="vulpix" />

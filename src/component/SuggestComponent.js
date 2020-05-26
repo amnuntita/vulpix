@@ -1,37 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { ListGroup, ListGroupItem, DropdownItem } from "reactstrap";
-import { baseUrl } from "../shared/BaseUrl.js";
+import React, { useState } from "react";
+import { ListGroupItem } from "reactstrap";
+import { Link } from "react-router-dom";
 
-const SuggestComponent = (props) => {
-  const [suggest, setSuggest] = useState([]);
-  const term = props.term;
-
-  useEffect(() => {
-    async function fetchSuggest() {
-      const res = await fetch(baseUrl + "suggest/?q=" + term);
-      res.json().then((res) => {
-        setSuggest(res.rows);
-      });
-    }
-    fetchSuggest();
-  }, [term]);
-
-  function ListSuggest() {
-    if (term.length == 0) {
-      return <div></div>;
-    }
-    return suggest.map((app) => {
-      return (
-        <ListGroupItem tag="a" href={`/result/${app.title}`} action>
-          {app.title}
-        </ListGroupItem>
-      );
-    });
-  }
-
+const SuggestComponent = ({ suggestItems }) => {
   return (
     <div style={{ fontSize: "small" }}>
-      <ListSuggest />
+      {suggestItems && suggestItems.length > 0 ? (
+        suggestItems.map((app) => (
+          //Link is better as it only move root page and makes it routable
+          <Link key={app.title} to={`/result/${app.title}`}>
+            <ListGroupItem>{app.title}</ListGroupItem>
+          </Link>
+        ))
+      ) : (
+        // If There no search result, show No Result!
+        <ListGroupItem>-----------</ListGroupItem>
+      )}
     </div>
   );
 };

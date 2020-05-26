@@ -6,15 +6,6 @@ var cors = require("cors");
 const { pool } = require("./config");
 const path = require("path");
 
-/*const db = mysql.createConnection({
-  // config ค่าการเชื่อมต่อฐานข้อมูล
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "vulpixdb",
-});
-db.connect(); // เชื่อมต่อฐานข้อมูล */
-
 const app = Express();
 const port = process.env.PORT || 3002;
 
@@ -78,7 +69,7 @@ app.get("/device/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT * FROM device WHERE title = $1",
+    "SELECT advertiser_id,android_id,device_serial_number,google_services_framework_id,imei FROM res WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -96,7 +87,7 @@ app.get("/location/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT * FROM d_location WHERE title = $1",
+    "SELECT country,physical_address,time_zone,gps FROM res WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -114,7 +105,7 @@ app.get("/media/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT * FROM media WHERE title = $1",
+    "SELECT audio,contact,photo,sms,web_browsing_log FROM res WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -132,7 +123,7 @@ app.get("/simcard/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT * FROM simcard WHERE title = $1",
+    "SELECT mac_address,cell_id,iccid_sim_serial_number,imsi,location_area_code,phone_number FROM res WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -150,7 +141,7 @@ app.get("/user/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT * FROM d_user WHERE title = $1",
+    "SELECT age,calendar,contact,cvv,date_of_birth,email,gender,name,password,ssn,username FROM res WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
