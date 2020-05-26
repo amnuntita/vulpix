@@ -42,7 +42,7 @@ app.get("/suggest", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const q = req.query.q + "%";
   let query = pool.query(
-    "SELECT DISTINCT title FROM app WHERE lower(title) LIKE $1 LIMIT 5 OFFSET 0",
+    "SELECT DISTINCT title FROM app WHERE lower(title) LIKE lower($1) LIMIT 5 OFFSET 0",
     [q],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -60,7 +60,7 @@ app.get("/search", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const q = "%" + req.query.q + "%";
   let query = pool.query(
-    "SELECT DISTINCT * FROM app WHERE lower(title) LIKE $1",
+    "SELECT DISTINCT * FROM app WHERE lower(title) LIKE lower($1)",
     [q],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
