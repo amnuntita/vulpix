@@ -20,12 +20,12 @@ const ResultComponent = (props) => {
   const [qres, setRes] = useState("");
   const [resList, setList] = useState([]);
   const [num, setNum] = useState(false);
-  const query = "search/?q=" + props.query;
+  const query = "/search/?q=" + props.query;
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(baseUrl + query);
-      console.log(baseUrl + query);
+      const res = await fetch(query);
+      //console.log(baseUrl + query);
       res
         .json()
         .then((res) => {

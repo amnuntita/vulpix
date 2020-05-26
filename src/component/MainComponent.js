@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import AppDisplay from "./AppDisplay.js";
 import HomeComponent from "./HomeComponent.js";
 import AboutComponent from "./AboutComponent.js";

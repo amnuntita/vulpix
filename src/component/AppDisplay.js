@@ -1,5 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
-import NavBar from "./NavBar.js";
+import React from "react";
 import AppDetail from "./AppDetail.js";
 import AppScore from "./AppScore.js";
 

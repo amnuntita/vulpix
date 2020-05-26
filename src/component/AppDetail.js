@@ -33,7 +33,7 @@ const AppDetail = (props) => {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(baseUrl + "app/" + appId);
+      const res = await fetch("/app/" + appId);
       res.json().then((res) => {
         setApp(res.rows[0]);
         return res;

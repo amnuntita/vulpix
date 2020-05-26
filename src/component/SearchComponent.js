@@ -13,7 +13,7 @@ const Search = ({ history }) => {
     // Create lambda function, then use it immediately
     if (searchTerm !== "") {
       (async () => {
-        const res = await fetch(`${baseUrl}suggest/?q=${searchTerm}`);
+        const res = await fetch(`/suggest/?q=${searchTerm}`);
         res.json().then((result) => {
           setSuggestItems(result.rows);
           return suggestItems;

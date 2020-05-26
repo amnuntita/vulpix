@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Media } from "reactstrap";
 import Search from "./SearchComponent.js";
 import { baseUrl } from "../shared/BaseUrl.js";

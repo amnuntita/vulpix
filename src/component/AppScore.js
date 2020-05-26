@@ -5,8 +5,8 @@ import { baseUrl } from "../shared/BaseUrl.js";
 const AppScore = (props) => {
   const [vulList, setList] = useState([]);
   //const [res, setRes] = useState();
-  const apk = baseUrl + props.cat + "/" + props.appId;
-  const cat = props.cat == "Media" ? "Media and Device Usage" : props.cat;
+  const apk = "/" + props.cat + "/" + props.appId;
+  const cat = props.cat === "Media" ? "Media and Device Usage" : props.cat;
 
   useEffect(() => {
     async function fetchVul() {
