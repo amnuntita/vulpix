@@ -1,37 +1,50 @@
 import React, { useState, useEffect } from "react";
-import { Input, Col, Button, Row, Form } from "reactstrap";
+import { Link, withRouter } from "react-router-dom";
 import { baseUrl } from "../shared/BaseUrl.js";
-import { Link } from "react-router-dom";
+
+import { Form, Input, Button } from "reactstrap";
+
 import SuggestComponent from "./SuggestComponent.js";
 
-const Search = (props) => {
+const Search = ({ history }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [suggestItems, setSuggestItems] = useState([]);
 
-  async function handleInputChange(e) {
-    setSearchTerm(e.target.value);
-  }
-
-  function keyHandle(e) {
-    if (e.key == "Enter") {
-      window.location.href = `/result/${searchTerm}`;
+  useEffect(() => {
+    // Deletable If you understanded
+    // Create lambda function, then use it immediately
+    if (searchTerm !== "") {
+      (async () => {
+        const res = await fetch(`${baseUrl}suggest/?q=${searchTerm}`);
+        res.json().then((result) => setSuggestItems(result));
+      })();
     }
-  }
+  }, [searchTerm]);
+
+  const handleInputChange = async (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (searchTerm !== "") {
+      history.push(`/result/${searchTerm}`);
+    }
+  };
 
   return (
     <div>
-      <Input
-        type="text"
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyPress={keyHandle}
-        value={searchTerm}
-        type="text"
-      />
+      <Form onSubmit={handleSubmit}>
+        <Input type="text" onChange={handleInputChange} value={searchTerm} />
+      </Form>
       <div className="suggest">
-        <SuggestComponent term={searchTerm} />
+        {searchTerm.length !== 0 && (
+          <SuggestComponent suggestItems={suggestItems} />
+        )}
       </div>
       <div>
         <div className="searchButton">
-          <Button style={{ backgroundColor: "#000850" }}>
+          <Button>
             <Link to={`/result/${searchTerm}`}>Go</Link>
           </Button>
         </div>
@@ -40,4 +53,4 @@ const Search = (props) => {
   );
 };
 
-export default Search;
+export default withRouter(Search);

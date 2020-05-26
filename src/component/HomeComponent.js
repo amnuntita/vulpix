@@ -1,36 +1,37 @@
-import React, { useState } from "react";
-import { Media } from "reactstrap";
-import NavBar from "./NavBar.js";
-import Search from "./SearchComponent.js";
+import React from "react";
 import { baseUrl } from "../shared/BaseUrl.js";
-import { logDOM } from "@testing-library/react";
 
-const HomeComponent = (props) => {
+// Components from 3rd party
+import { Media } from "reactstrap";
+
+// My Components
+import Search from "./SearchComponent.js";
+
+// Seperate for being cleaner
+const IconCredit = () => (
+  <div className="credit">
+    Icons made by{" "}
+    <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">
+      Smashicons
+    </a>{" "}
+    from{" "}
+    <a href="https://www.flaticon.com/" title="Flaticon">
+      www.flaticon.com
+    </a>
+  </div>
+);
+
+const HomeComponent = () => {
   return (
-    <div>
-      <div className="credit">
-        Icons made by{" "}
-        <a
-          href="https://www.flaticon.com/authors/smashicons"
-          title="Smashicons"
-        >
-          Smashicons
-        </a>{" "}
-        from{" "}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>
-      </div>
-      <NavBar />
+    <main>
+      <IconCredit />
       <div className="logo">
-        <Media>
-          <Media src={baseUrl + "public/newlogo.png"} alt="vulpix" />
-        </Media>
+        <Media src={`${baseUrl}public/newlogo.png`} alt="vulpix" />
       </div>
       <div className="homesearch">
         <Search />
       </div>
-    </div>
+    </main>
   );
 };
 

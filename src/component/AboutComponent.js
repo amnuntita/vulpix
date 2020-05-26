@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function AboutComponent() {
   return <div>About</div>;

@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Col,
-  Row,
-  Media,
-  Button,
-  UncontrolledPopover,
-  Popover,
-  PopoverHeader,
-  PopoverBody,
-} from "reactstrap";
 import { baseUrl } from "../shared/BaseUrl.js";
+
+import { Card, CardBody, CardTitle, CardText, Col, Media } from "reactstrap";
 
 const AppScore = (props) => {
   const [vulList, setList] = useState([]);

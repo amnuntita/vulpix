@@ -1,37 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { ListGroup, ListGroupItem, DropdownItem } from "reactstrap";
-import { baseUrl } from "../shared/BaseUrl.js";
 
-const SuggestComponent = (props) => {
-  const [suggest, setSuggest] = useState([]);
-  const term = props.term;
+import { Link } from "react-router-dom";
 
-  useEffect(() => {
-    async function fetchSuggest() {
-      const res = await fetch(baseUrl + "suggest/?q=" + term);
-      res.json().then((res) => {
-        setSuggest(res);
-      });
-    }
-    fetchSuggest();
-  }, [term]);
+import { ListGroupItem } from "reactstrap";
 
-  function ListSuggest() {
-    if (term.length == 0) {
-      return <div></div>;
-    }
-    return suggest.map((app) => {
-      return (
-        <ListGroupItem tag="a" href={`/result/${app.title}`} action>
-          {app.title}
-        </ListGroupItem>
-      );
-    });
-  }
-
+const SuggestComponent = ({ suggestItems }) => {
   return (
     <div style={{ fontSize: "small" }}>
-      <ListSuggest />
+      {
+        // If 'suggest' is existed && not empty, then show
+        suggestItems && suggestItems.length !== 0 ? (
+          suggestItems.map((app) => (
+            // Deletable If you understanded
+            // Do not use 'a' tag if route among routes in Our website
+            // Bc of what 'a' tag did is create the new whole page again and again which's slow
+            // On the other hand, 'Link' just change only Root component, much faster ,in short
+            // You can cover any component w/ 'Link' to make it routable
+            <Link key={app.title} to={`/result/${app.title}`}>
+              <ListGroupItem>{app.title}</ListGroupItem>
+            </Link>
+          ))
+        ) : (
+          // If There no search result, show No Result!
+          <ListGroupItem>No Result!</ListGroupItem>
+        )
+      }
     </div>
   );
 };

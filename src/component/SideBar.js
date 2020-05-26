@@ -1,13 +1,15 @@
 import React from "react";
-import { Label, NavItem } from "reactstrap";
-import Search from "./SearchComponent.js";
 import { Link } from "react-router-dom";
+
+import { Label } from "reactstrap";
+
+import Search from "./SearchComponent.js";
 
 const SideBar = () => {
   return (
     <div className="sidebar">
       <nav>
-        <Label> search box </Label>
+        <Label>search box</Label>
         <Link className="nav-link" to="/home">
           Home
         </Link>

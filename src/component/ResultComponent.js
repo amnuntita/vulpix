@@ -1,19 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardImgOverlay,
-  CardImg,
-  CardText,
-  Media,
-  Col,
-  Row,
-} from "reactstrap";
+import { Card, CardBody, CardTitle, CardSubtitle, Media } from "reactstrap";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../shared/BaseUrl.js";
-import NavBar from "./NavBar.js";
 import SearchComponent from "./SearchComponent.js";
 
 const ResultComponent = (props) => {
@@ -52,7 +40,7 @@ const ResultComponent = (props) => {
         <div className="row">
           {resList.map((app) => {
             return (
-              <div className="col-12 col-md-3 m-1">
+              <div className="col-12 col-md-3 m-1" key={app.title}>
                 <div className="res">
                   <Card key={app.apk}>
                     <CardBody>
@@ -85,7 +73,6 @@ const ResultComponent = (props) => {
 
   return (
     <div>
-      <NavBar />
       <div className="resultSearch">
         <SearchComponent />
       </div>
@@ -94,4 +81,4 @@ const ResultComponent = (props) => {
   );
 };
 
-export default ResultComponent;
+export default React.memo(ResultComponent);

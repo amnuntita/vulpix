@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { baseUrl } from "../shared/BaseUrl.js";
 import {
   Card,
   CardBody,
@@ -6,49 +7,44 @@ import {
   CardSubtitle,
   CardText,
   Media,
-  Col,
-  Row,
 } from "reactstrap";
-import { baseUrl } from "../shared/BaseUrl.js";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+// import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+
+// Put out of Component to avoid unneed re-create every rerender time
+// Or create out of this file, then import
+const numStyle = {
+  fontSize: 30,
+  marginTop: 20,
+};
+const lnumStyle = {
+  fontSize: 20,
+  marginTop: 30,
+};
+const scoreStyle = {
+  fontSize: 30,
+  marginTop: 30,
+};
+const vStyle = {
+  borderColor: "#0000a0",
+  borderWidth: 1,
+  backgroundColor: "#FFD801",
+};
 
 const AppDetail = (props) => {
   const [app, setApp] = useState(false);
   const appId = props.select;
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(baseUrl + "app/" + appId);
-      res
-        .json()
-        .then((res) => {
-          setApp(res[0]);
-          return res;
-        })
-        .then((res) => console.log(appId));
-    }
-    fetchData();
+    (async () => {
+      let res = await fetch(`${baseUrl}app/${appId}`);
+      res = await res.json();
+      setApp(res[0]);
+      // console.log(res);
+    })();
   }, [appId]);
 
-  const numStyle = {
-    fontSize: 30,
-    marginTop: 20,
-  };
-  const lnumStyle = {
-    fontSize: 20,
-    marginTop: 30,
-  };
-  const scoreStyle = {
-    fontSize: 30,
-    marginTop: 30,
-  };
-  const vStyle = {
-    borderColor: "#0000a0",
-    borderWidth: 1,
-    backgroundColor: "#FFD801",
-  };
-
+  // var should have been un used nowadays, use const, or let instead
   const number = (p, text) => {
     //console.log(p);
     var long = false;
@@ -73,6 +69,7 @@ const AppDetail = (props) => {
     );
   };
 
+  // Do not use 'div' too much, Not good
   return (
     <div className="appcard col-11 col-md-5">
       <Card>
@@ -86,16 +83,15 @@ const AppDetail = (props) => {
                 <h>{app.title}</h>
               </CardTitle>
               <CardSubtitle>
-                <b>Developer:</b> {app.dev}
+                <strong>Developer:</strong> {app.dev}
               </CardSubtitle>
               <CardText>
-                <b>Category: </b> {app.cat}
-              </CardText>
-              <CardText>
-                <b>Description: </b> {app.desc}
-              </CardText>
-              <CardText>
-                <b>Privacy Policy: </b> <a href={app.policy}>{app.policy}</a>
+                <strong>Category: </strong> {app.cat}
+                <br />
+                <strong>Description: </strong> {app.desc}
+                <br />
+                <strong>Privacy Policy: </strong>{" "}
+                <a href={app.policy}>{app.policy}</a>
               </CardText>
             </div>
           </div>
