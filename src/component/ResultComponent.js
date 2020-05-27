@@ -29,15 +29,11 @@ const ResultComponent = (props) => {
       res
         .json()
         .then((res) => {
-          setRes(res);
+          setList(res.rows);
           return res;
         })
         .then((res) => {
-          setList(res.rows);
-          return resList;
-        })
-        .then((resList) => {
-          if (resList.length > 0) setNum(resList.length);
+          setNum(res.rowCount);
         });
     }
     fetchData();

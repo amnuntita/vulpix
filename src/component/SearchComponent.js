@@ -28,9 +28,7 @@ const Search = ({ history }) => {
           type="text"
         />
         <div className="suggest">
-          {searchTerm.length !== 0 && (
-            <SuggestComponent searchTerm={searchTerm} />
-          )}
+          <SuggestComponent searchTerm={searchTerm} />
         </div>
         <div className="searchButton">
           <Button style={{ backgroundColor: "#000850" }}>
