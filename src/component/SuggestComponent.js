@@ -26,19 +26,18 @@ const SuggestComponent = (props) => {
     } else {
       return (
         <div>
-          suggestItems.map((app) =>{" "}
-          {
-            //Link is better as it only move root page and makes it routable
-            <Link key={app.title} to={`/result/${app.title}`}>
-              <ListGroupItem>{app.title}</ListGroupItem>
-            </Link>
-          }
-          )
+          {suggestItems.map((app) => {
+            return (
+              //Link is better as it only move root page and makes it routable
+              <Link key={app.title} to={`/result/${app.title}`}>
+                <ListGroupItem>{app.title}</ListGroupItem>
+              </Link>
+            );
+          })}
         </div>
       );
     }
   }
-
   return (
     <div style={{ fontSize: "small" }}>
       <ListSuggest />
