@@ -3,7 +3,6 @@ import { ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const SuggestComponent = ({ suggestItems }) => {
-  console.log(suggestItems[0].title);
   return (
     <div style={{ fontSize: "small" }}>
       {suggestItems && suggestItems.length !== 0 ? (
