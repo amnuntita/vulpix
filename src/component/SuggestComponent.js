@@ -22,18 +22,9 @@ const SuggestComponent = (props) => {
 
   function ListSuggest() {
     if (searchTerm.length == 0) {
-      return <div></div>;
+      return <div>nothing here</div>;
     } else {
-      return (
-        <div>
-          {suggestItems.map((app) => {
-            return (
-              //Link is better as it only move root page and makes it routable
-              <div>test</div>
-            );
-          })}
-        </div>
-      );
+      return <div>"something here"</div>;
     }
   }
   return (
