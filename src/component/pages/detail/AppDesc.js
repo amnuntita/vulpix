@@ -7,7 +7,7 @@ import {
   CardText,
   Media,
 } from "reactstrap";
-import { baseUrl } from "../shared/BaseUrl.js";
+import { baseUrl } from "../../shared/BaseUrl.js";
 
 const numStyle = {
   fontSize: 30,
@@ -27,7 +27,7 @@ const vStyle = {
   backgroundColor: "#FFD801",
 };
 
-const AppDetail = (props) => {
+const AppDesc = (props) => {
   const [app, setApp] = useState(false);
   const appId = props.select;
 
@@ -109,4 +109,4 @@ const AppDetail = (props) => {
   );
 };
 
-export default AppDetail;
+export default AppDesc;

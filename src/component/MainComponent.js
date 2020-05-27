@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import AppDisplay from "./AppDisplay.js";
-import HomeComponent from "./HomeComponent.js";
-import AboutComponent from "./AboutComponent.js";
-import ResultComponent from "./ResultComponent.js";
-import NotFoundPage from "./NotFoundPage.js";
-import NavBar from "./NavBar.js";
+import AppDisplay from "./pages/detail/detail.js";
+import HomeComponent from "./pages/home/home.js";
+import ResultComponent from "./pages/result/result.js";
+import NotFoundPage from "./pages/NotFoundPage.js";
+import NavBar from "./shared/NavBar.js";
 
 const Main = () => {
   const [selectedId, setSelected] = useState(false);
@@ -37,7 +36,6 @@ const Main = () => {
         <Route exact path="/">
           <HomeComponent />
         </Route>
-        <Route path="/about" component={AboutComponent} />
         <Route path="/detail/:appId" component={detail} />
         <Route path="/result/:query" component={result} />
         <Route component={NotFoundPage} />

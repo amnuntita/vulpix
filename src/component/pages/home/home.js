@@ -1,7 +1,7 @@
 import React from "react";
 import { Media } from "reactstrap";
-import Search from "./SearchComponent.js";
-import { baseUrl } from "../shared/BaseUrl.js";
+import Search from "../../shared/SearchComponent.js";
+import { baseUrl } from "../../shared/BaseUrl.js";
 import { logDOM } from "@testing-library/react";
 
 const HomeComponent = (props) => {

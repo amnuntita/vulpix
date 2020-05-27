@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Navbar,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -9,9 +8,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Media,
 } from "reactstrap";
-import Search from "./SearchComponent.js";
 
 const NavBar = () => {
   return (

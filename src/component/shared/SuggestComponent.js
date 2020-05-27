@@ -11,7 +11,7 @@ const SuggestComponent = (props) => {
     // Create lambda function, then use it immediately
     async function fetchSuggest() {
       const res = await fetch(
-        /*"http://localhost:3002/" +*/ "suggest/?q=" + searchTerm
+        /*"http://localhost:3002/" +*/ "/suggest/?q=" + searchTerm
       );
       res.json().then((res) => {
         setSuggestItems(res.rows);

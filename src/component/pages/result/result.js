@@ -1,23 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardImgOverlay,
-  CardImg,
-  CardText,
-  Media,
-  Col,
-  Row,
-} from "reactstrap";
+import { Card, CardBody, CardTitle, CardSubtitle, Media } from "reactstrap";
 import { Link } from "react-router-dom";
-import { baseUrl } from "../shared/BaseUrl.js";
-import NavBar from "./NavBar.js";
-import SearchComponent from "./SearchComponent.js";
+import SearchComponent from "../../shared/SearchComponent.js";
 
 const ResultComponent = (props) => {
-  const [qres, setRes] = useState("");
   const [resList, setList] = useState([]);
   const [num, setNum] = useState(false);
   const query = "/search/?q=" + props.query;
@@ -37,7 +23,7 @@ const ResultComponent = (props) => {
         });
     }
     fetchData();
-  }, [resList.length]);
+  }, [query]);
 
   function DisplayApp() {
     return (

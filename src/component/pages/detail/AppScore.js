@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardBody, CardTitle, CardText, Col, Media } from "reactstrap";
-import { baseUrl } from "../shared/BaseUrl.js";
+import { baseUrl } from "../../shared/BaseUrl.js";
 
 const AppScore = (props) => {
   const [vulList, setList] = useState([]);

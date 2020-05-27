@@ -1,5 +1,5 @@
 import React from "react";
-import AppDetail from "./AppDetail.js";
+import AppDesc from "./AppDesc.js";
 import AppScore from "./AppScore.js";
 
 const AppDisplay = (props) => {
@@ -7,7 +7,7 @@ const AppDisplay = (props) => {
     <div>
       <div style={{ fontFamily: "Nunito" }}>
         <div className="row">
-          <AppDetail select={props.select} />
+          <AppDesc select={props.select} />
         </div>
         <div className="appcard col-11 col-md-5" style={{ fontSize: 26 }}>
           VULPIX analysis - detected leaked information
