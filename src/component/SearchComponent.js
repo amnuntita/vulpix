@@ -16,13 +16,12 @@ const Search = ({ history }) => {
         const res = await fetch(`/suggest/?q=${searchTerm}`);
         res.json().then((result) => {
           setSuggestItems(result.rows);
+          console.log("doing something");
           return suggestItems;
         });
       })();
     }
   }, [searchTerm]);
-
-  console.log(`/suggest/?q=${searchTerm}`);
 
   const handleInputChange = async (e) => {
     setSearchTerm(e.target.value);

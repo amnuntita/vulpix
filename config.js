@@ -7,7 +7,7 @@ const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_P
 
 const pool = new Pool({
   connectionString: isProduction
-    ? `postgres://mbheogppvtsjeh:67cef67ebbd8f5257f3e9dc89caaba0d8a50d6bab2ea4c974732329d24df00cd@ec2-52-44-55-63.compute-1.amazonaws.com:5432/dfap7v0cfe6k17`
+    ? `postgres://mbheogppvtsjeh:67cef67ebbd8f5257f3e9dc89caaba0d8a50d6bab2ea4c974732329d24df00cd@ec2-52-44-55-63.compute-1.amazonaws.com:5432/dfap7v0cfe6k17?sslmode=require`
     : connectionString,
   ssl: isProduction,
 });
