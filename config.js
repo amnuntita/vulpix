@@ -10,4 +10,6 @@ const pool = new Pool({
   ssl: isProduction,
 });
 
+console.log(isProduction);
+
 module.exports = { pool };
