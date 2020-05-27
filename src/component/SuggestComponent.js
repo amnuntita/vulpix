@@ -22,7 +22,7 @@ const SuggestComponent = (props) => {
 
   function ListSuggest() {
     if (searchTerm.length == 0) {
-      return <div>nothing here</div>;
+      return <div></div>;
     } else {
       return (
         <div>
