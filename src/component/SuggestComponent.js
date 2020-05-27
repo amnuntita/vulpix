@@ -6,7 +6,7 @@ const SuggestComponent = ({ suggestItems }) => {
   console.log(suggestItems);
   return (
     <div style={{ fontSize: "small" }}>
-      {suggestItems && suggestItems.length !== 0 ? (
+      {suggestItems ? (
         suggestItems.map((app) => {
           return (
             //Link is better as it only move root page and makes it routable
