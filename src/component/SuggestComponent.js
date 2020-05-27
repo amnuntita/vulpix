@@ -24,7 +24,13 @@ const SuggestComponent = (props) => {
     if (searchTerm.length == 0) {
       return <div>nothing here</div>;
     } else {
-      return <div>{suggestItems.length}</div>;
+      return (
+        <div>
+          {suggestItems.map((app) => {
+            return <div>{app.title}</div>;
+          })}
+        </div>
+      );
     }
   }
   return (
