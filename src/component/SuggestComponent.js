@@ -27,7 +27,11 @@ const SuggestComponent = (props) => {
       return (
         <div>
           {suggestItems.map((app) => {
-            return <div>{app.title}</div>;
+            return (
+              <Link key={app.title} to={`/result/${app.title}`}>
+                <ListGroupItem>{app.title}</ListGroupItem>
+              </Link>
+            );
           })}
         </div>
       );
