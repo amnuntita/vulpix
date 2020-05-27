@@ -6,20 +6,6 @@ import SuggestComponent from "./SuggestComponent.js";
 
 const Search = ({ history }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [suggestItems, setSuggestItems] = useState([]);
-
-  useEffect(() => {
-    // Deletable If you understanded
-    // Create lambda function, then use it immediately
-    if (searchTerm !== "") {
-      (async () => {
-        const res = await fetch("/suggest/?q=" + searchTerm);
-        res.json().then((result) => {
-          setSuggestItems(result.rows);
-        });
-      })();
-    }
-  }, [searchTerm]);
 
   const handleInputChange = async (e) => {
     setSearchTerm(e.target.value);
@@ -43,7 +29,7 @@ const Search = ({ history }) => {
         />
         <div className="suggest">
           {searchTerm.length !== 0 && (
-            <SuggestComponent suggestItems={suggestItems} />
+            <SuggestComponent searchTerm={searchTerm} />
           )}
         </div>
         <div className="searchButton">

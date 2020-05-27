@@ -1,19 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const SuggestComponent = ({ suggestItems }) => {
-  console.log(suggestItems);
-  return (
-    <div style={{ fontSize: "small" }}>
-      {suggestItems.map((app) => {
+const SuggestComponent = (props) => {
+  const [suggestItems, setSuggestItems] = useState([]);
+  const searchTerm = props.searchTerm;
+
+  useEffect(() => {
+    // Deletable If you understanded
+    // Create lambda function, then use it immediately
+    async function fetchSuggest() {
+      const res = await fetch(
+        "http://localhost:3002/" + "suggest/?q=" + searchTerm
+      );
+      res.json().then((res) => {
+        setSuggestItems(res.rows);
+      });
+    }
+    fetchSuggest();
+  }, [searchTerm]);
+
+  function ListSuggest() {
+    if (searchTerm.length == 0) {
+      return <div></div>;
+    } else {
+      return suggestItems.map((app) => {
         return (
           //Link is better as it only move root page and makes it routable
           <Link key={app.title} to={`/result/${app.title}`}>
             <ListGroupItem>{app.title}</ListGroupItem>
           </Link>
         );
-      })}
+      });
+    }
+  }
+  return (
+    <div style={{ fontSize: "small" }}>
+      <ListSuggest />
     </div>
   );
 };
