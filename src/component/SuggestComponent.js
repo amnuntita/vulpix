@@ -24,7 +24,7 @@ const SuggestComponent = (props) => {
     if (searchTerm.length == 0) {
       return <div>nothing here</div>;
     } else {
-      return <div>"something here"</div>;
+      return <div>{suggestItems.length}</div>;
     }
   }
   return (
