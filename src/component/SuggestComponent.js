@@ -22,7 +22,7 @@ const SuggestComponent = (props) => {
 
   function ListSuggest() {
     if (searchTerm.length == 0) {
-      return <div></div>;
+      return <div>test</div>;
     } else {
       return suggestItems.map((app) => {
         return (
