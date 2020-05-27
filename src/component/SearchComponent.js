@@ -16,8 +16,6 @@ const Search = ({ history }) => {
         const res = await fetch("/suggest/?q=" + searchTerm);
         res.json().then((result) => {
           setSuggestItems(result.rows);
-          console.log(suggestItems);
-          return suggestItems;
         });
       })();
     }
