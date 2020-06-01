@@ -69,7 +69,7 @@ app.get("/device/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT advertiser_id,android_id,device_serial_number,google_services_framework_id,imei FROM res WHERE title = $1",
+    "SELECT advertiser_id,android_id,device_serial_number,google_services_framework_id,imei FROM result WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -87,7 +87,7 @@ app.get("/location/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT country,physical_address,time_zone,gps FROM res WHERE title = $1",
+    "SELECT country,physical_address,time_zone,gps FROM result WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -105,7 +105,7 @@ app.get("/media/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT audio,contact,photo,sms,web_browsing_log FROM res WHERE title = $1",
+    "SELECT audio_recording,contact_book,photo,sms,web_browsing_log FROM result WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -123,7 +123,7 @@ app.get("/simcard/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT mac_address,cell_id,iccid_sim_serial_number,imsi,location_area_code,phone_number FROM res WHERE title = $1",
+    "SELECT mac_address,cell_id,iccid_sim_serial_number,imsi,location_area_code,phone_number FROM result WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql
@@ -141,7 +141,7 @@ app.get("/user/:appId", (req, res) => {
   // Router เวลาเรียกใช้งาน
   const id = req.params.appId;
   let query = pool.query(
-    "SELECT age,calendar,contact,cvv,date_of_birth,email,gender,name,password,ssn,username FROM res WHERE title = $1",
+    "SELECT age,calendar,contact_book,cvv,date_of_birth,email,gender,name,password,ssn,username FROM result WHERE title = $1",
     [id],
     (err, results) => {
       // สั่ง Query คำสั่ง sql

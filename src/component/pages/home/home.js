@@ -1,7 +1,7 @@
 import React from "react";
 import { Media } from "reactstrap";
 import Search from "../../shared/SearchComponent.js";
-import { baseUrl } from "../../shared/BaseUrl.js";
+//import { baseUrl } from "../../shared/BaseUrl.js";
 import { logDOM } from "@testing-library/react";
 
 const HomeComponent = (props) => {
@@ -27,7 +27,7 @@ const HomeComponent = (props) => {
       <IconCredit />
       <div className="logo">
         <Media>
-          <Media src={baseUrl + "/newlogo.png"} alt="vulpix" />
+          <Media src={"/newlogo.png"} alt="vulpix" />
         </Media>
       </div>
       <div className="homesearch">

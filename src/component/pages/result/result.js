@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardBody, CardTitle, CardSubtitle, Media } from "reactstrap";
-import { Link } from "react-router-dom";
 import SearchComponent from "../../shared/SearchComponent.js";
+import ResCard from "./ResCard.js";
+//import { baseUrl } from "../../shared/BaseUrl.js";
 
 const ResultComponent = (props) => {
   const [resList, setList] = useState([]);
@@ -11,7 +11,6 @@ const ResultComponent = (props) => {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(query);
-      //console.log(baseUrl + query);
       res
         .json()
         .then((res) => {
@@ -25,52 +24,19 @@ const ResultComponent = (props) => {
     fetchData();
   }, [query]);
 
-  function DisplayApp() {
-    return (
-      <div>
-        <div className="textstyle">
-          {num} results for keyword "{props.query}"
-        </div>
-        <div className="row">
-          {resList.map((app) => {
-            return (
-              <div className="col-12 col-md-3 m-1">
-                <div className="res">
-                  <Card key={app.apk}>
-                    <CardBody>
-                      <div className="row">
-                        <Media left className="icon">
-                          <Media
-                            src={app.icon}
-                            alt="Generic placeholder image"
-                          />
-                        </Media>
-                        <div className="col">
-                          <Link to={`/detail/${app.apk}`}>
-                            <CardTitle style={{ fontSize: 20 }}>
-                              {app.title}
-                            </CardTitle>
-                          </Link>
-                          <CardSubtitle>Developer: {app.dev}</CardSubtitle>
-                        </div>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div>
       <div className="resultSearch">
-        <SearchComponent />
+        <SearchComponent resList={resList} />
       </div>
-      <DisplayApp />
+      <div className="textstyle">
+        {num} results for keyword "{props.query}"
+      </div>
+      <div className="row">
+        {resList.map((app) => {
+          return <ResCard app={app} />;
+        })}
+      </div>
     </div>
   );
 };

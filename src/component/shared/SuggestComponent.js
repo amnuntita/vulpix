@@ -7,12 +7,8 @@ const SuggestComponent = (props) => {
   const searchTerm = props.searchTerm;
 
   useEffect(() => {
-    // Deletable If you understanded
-    // Create lambda function, then use it immediately
     async function fetchSuggest() {
-      const res = await fetch(
-        /*"http://localhost:3002/" +*/ "/suggest/?q=" + searchTerm
-      );
+      const res = await fetch("/suggest/?q=" + searchTerm);
       res.json().then((res) => {
         setSuggestItems(res.rows);
       });
@@ -21,7 +17,7 @@ const SuggestComponent = (props) => {
   }, [searchTerm]);
 
   function ListSuggest() {
-    if (searchTerm.length == 0) {
+    if (searchTerm.length === 0) {
       return <div></div>;
     } else {
       return (

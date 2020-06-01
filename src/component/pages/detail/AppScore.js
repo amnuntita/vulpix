@@ -4,22 +4,16 @@ import { baseUrl } from "../../shared/BaseUrl.js";
 
 const AppScore = (props) => {
   const [vulList, setList] = useState([]);
-  //const [res, setRes] = useState();
   const apk = "/" + props.cat + "/" + props.appId;
   const cat = props.cat === "Media" ? "Media and Device Usage" : props.cat;
 
   useEffect(() => {
     async function fetchVul() {
       const res = await fetch(apk);
-      res
-        .json()
-        .then((res) => {
-          setList(res.rows[0]);
-          return vulList;
-        })
-        .then((vulList) => {
-          console.log(vulList);
-        });
+      res.json().then((res) => {
+        setList(res.rows[0]);
+        return vulList;
+      });
     }
 
     fetchVul();
@@ -37,7 +31,7 @@ const AppScore = (props) => {
   }
 
   const DisplayIcon = (vulList) => {
-    if (vulList.length == 0) {
+    if (vulList.length === 0) {
       return (
         <Col>
           <CardText style={{ textAlign: "center" }}>
@@ -49,9 +43,10 @@ const AppScore = (props) => {
       return (
         <div className="row" style={{ marginLeft: 30 }}>
           {Object.keys(vulList).map((k) => {
-            if (k != "title") {
+            if (k !== "title") {
               return <DisplayPI PI={k} leak={parseInt(vulList[k])} />;
             }
+            return <div></div>;
           })}
         </div>
       );

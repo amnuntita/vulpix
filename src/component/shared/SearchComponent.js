@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Input, Button, Form } from "reactstrap";
-import { baseUrl } from "./BaseUrl.js";
 import { Link, withRouter } from "react-router-dom";
 import SuggestComponent from "./SuggestComponent.js";
 
 const Search = ({ history }) => {
   const [searchTerm, setSearchTerm] = useState("");
-
-  const handleInputChange = async (e) => {
-    setSearchTerm(e.target.value);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -14,7 +14,7 @@ const numStyle = {
   marginTop: 20,
 };
 const lnumStyle = {
-  fontSize: 20,
+  fontSize: 25,
   marginTop: 30,
 };
 const scoreStyle = {
@@ -42,25 +42,25 @@ const AppDesc = (props) => {
     fetchData();
   }, [appId]);
 
-  const number = (p, text) => {
+  const download = () => {
     //console.log(p);
-    var long = false;
-    if (app.download && text == "Download" && app.download.length > 4) {
-      var num = app.download.split(",")[0];
+    let long = false;
+    let num = app.download;
+    if (app.download && app.download.length > 4) {
+      num = app.download.split(",")[0];
       if (app.download.length > 13) {
-        var num = num.concat(app.download.split(",")[1]);
-        var long = true;
+        num = num.concat(app.download.split(",")[1]);
+        long = true;
       }
       if (app.download.length > 8) num = num.concat("M+");
       else num = num.concat("K+");
-    } else {
-      var num = p;
     }
+
     return (
       <div className="col-sm">
         <div className="box">
-          <div style={long ? lnumStyle : numStyle}>{num}</div>
-          {text}
+          <div style={lnumStyle}>{num}</div>
+          download
         </div>
       </div>
     );
@@ -94,8 +94,13 @@ const AppDesc = (props) => {
           </div>
           <hr />
           <div className="row">
-            {number(app.download, "Download")}
-            {number(app.rating, "Rating")}
+            {download()}
+            <div className="col-sm">
+              <div className="box">
+                <div style={numStyle}>{app.rating}</div>
+                Rating
+              </div>
+            </div>
             <div className="col-sm">
               <div className="box" style={vStyle}>
                 <div style={scoreStyle}>32</div>
