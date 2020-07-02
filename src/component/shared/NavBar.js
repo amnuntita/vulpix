@@ -34,7 +34,7 @@ const NavBar = () => {
             </DropdownMenu>
           </UncontrolledDropdown>
           <div className="cplogo">
-            <Media src="/cplogo.png"></Media>
+            <Media src="/CPlogo.png"></Media>
           </div>
         </Nav>
       </Navbar>
