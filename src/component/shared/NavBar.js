@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Media,
   Navbar,
   Nav,
   NavItem,
@@ -9,6 +10,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -23,10 +25,17 @@ const NavBar = () => {
               About
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem>What is VULPIX</DropdownItem>
-              <DropdownItem>VULPIX score</DropdownItem>
+              <Link to={`/about`}>
+                <DropdownItem>What is VULPIX</DropdownItem>
+              </Link>
+              <Link to={`/info`}>
+                <DropdownItem>VULPIX score</DropdownItem>
+              </Link>
             </DropdownMenu>
           </UncontrolledDropdown>
+          <div className="cplogo">
+            <Media src="/cplogo.png"></Media>
+          </div>
         </Nav>
       </Navbar>
     </div>

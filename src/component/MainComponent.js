@@ -5,6 +5,8 @@ import HomeComponent from "./pages/home/home.js";
 import ResultComponent from "./pages/result/result.js";
 import NotFoundPage from "./pages/NotFoundPage.js";
 import NavBar from "./shared/NavBar.js";
+import About from "./pages/about/about.js";
+import Info from "./pages/about/info.js";
 
 const Main = () => {
   const [selectedId, setSelected] = useState(false);
@@ -38,6 +40,8 @@ const Main = () => {
         </Route>
         <Route path="/detail/:appId" component={detail} />
         <Route path="/result/:query" component={result} />
+        <Route path="/about" component={About} />
+        <Route path="/info" component={Info} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

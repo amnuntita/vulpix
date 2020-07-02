@@ -8,6 +8,32 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.about {
+  margin-top: 8%;
+  margin-bottom: 2%;
+  text-align: center;
+  font-size: 500%;
+  font-family: "Nunito";
+}
+.footerinfo {
+  margin-top: 2%;
+  margin-bottom: 0;
+  margin-left: 5%;
+}
+
+.aboutinfo {
+  margin-top: 2%;
+  margin-bottom: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.cplogo img {
+  height: 30px;
+  width: 200px;
+  transform: translate(590%, 10%);
+}
+
 .textstyle {
   margin-left: 15%;
   margin-top: 10%;
@@ -162,6 +188,16 @@ h {
     width: 100%;
     height: auto;
     position: relative;
+  }
+  .footerinfo {
+    margin-top: 2%;
+    margin-bottom: 0;
+    margin-left: 15%;
+  }
+  .cplogo img {
+    height: 30px;
+    width: 200px;
+    transform: translate(0, 10%);
   }
   .logo img {
     width: 80%;
