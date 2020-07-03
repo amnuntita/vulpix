@@ -24,14 +24,14 @@
 .aboutinfo {
   margin-top: 2%;
   margin-bottom: 0;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .cplogo img {
   height: 30px;
   width: 200px;
-  transform: translate(550%, 10%);
+  transform: translate(10%, 10%);
 }
 
 .textstyle {
@@ -192,7 +192,7 @@ h {
   .footerinfo {
     margin-top: 2%;
     margin-bottom: 0;
-    margin-left: 15%;
+    margin-left: 5%;
   }
   .cplogo img {
     height: 30px;

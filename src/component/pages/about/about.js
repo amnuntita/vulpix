@@ -44,7 +44,7 @@ const About = (props) => {
       </div>
       <div style={{ marginTop: 20 }}></div>
       <Row>
-        <div className="footerinfo col-12 col-md-4 m-1">
+        <div className="footerinfo col-11 col-md-4">
           <b>
             “Comprehensive Detection of Vulnerable Personal Information Leaks in
             Android Applications”
@@ -54,13 +54,15 @@ const About = (props) => {
             Nattanon Wongwiwatchai, Phannawhat Pongkham, Kunwadee
             Sripanidkulchai{" "}
           </Row>
-          <Row className="footerinfo" style={{ marginLeft: 2 }}>
+          <Row className="aboutinfo" style={{ marginLeft: 2 }}>
             {" "}
-            (Department of Computer Engineering, Chulalongkorn University,
-            Thailand),{" "}
+            (Department of Computer Engineering,{" "}
+          </Row>
+          <Row className="aboutinfo" style={{ marginLeft: 2 }}>
+            Chulalongkorn University,Thailand)
           </Row>
         </div>
-        <div className="aboutinfo col-12 col-md-4 m-1">
+        <div className="footerinfo col-11 col-md-3">
           <b>
             Infocom Workshop on the Security, Privacy, and Digital Forensics of
             Mobile Systems and Networks
@@ -71,7 +73,7 @@ const About = (props) => {
           </Row>
         </div>
         <hr />
-        <div className="aboutinfo col-12 col-md-3 m-1">
+        <div className="footerinfo col-11 col-md-3">
           <dl>
             <dt>Team</dt>
             <dd>Nattanon Wongwiwatchai</dd>
